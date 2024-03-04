@@ -1,6 +1,8 @@
+import Navbar from './Components/Navbar.js'
 function App() {
     return (
-        <p>HOWRU</p>
+        <div>HowRU<Navbar /></div>
+        
     )
 }
 

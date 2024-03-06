@@ -24,3 +24,7 @@ yarn-error.log*
 
 # Ignore .bak files
 *.bak
+
+# Ignore any environment variables files
+*.env
+.env

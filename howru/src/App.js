@@ -1,7 +1,11 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar.js'
 import AboutUs from './Components/AboutUs.js';
 import MembershipSection from './Components/MembershipSection.js';
 import LoginWidget from './Components/LoginWidget.js';
+
+
 function App() {
     return (
         <div>

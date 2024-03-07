@@ -1,9 +1,10 @@
 import React from 'react';
 import * as Icon from 'react-bootstrap-icons';
+// import "../../Styling/bootstrap.css"
 
 export default function Navbar() {
     return (
-        <div>
+        <div class="bg-primary-subtle">
                 <ul className="nav flex-column">
                     <li className="nav-item">
                         <a href="#">

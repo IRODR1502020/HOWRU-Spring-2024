@@ -37,6 +37,15 @@ const SplashPage = () => {
 							<h6 class="text-center">Feel better with just a tap.</h6>
 						</div>
 					</div>
+					<div class="row bg-light">
+						<div class="col-md-6">
+							<h3>What is HowRU.Life?</h3>
+						</div>
+
+						<div class="col-md-6">
+							<h3>Features</h3>
+						</div>
+					</div>
 				</div>
 			</div>
 			<Footer />

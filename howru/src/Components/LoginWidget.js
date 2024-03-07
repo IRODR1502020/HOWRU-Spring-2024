@@ -1,5 +1,5 @@
 import React from 'react';
-import './bootstrap.css';
+import '../Styling/bootstrap.css';
 
 export default function LoginWidget () {
     return (

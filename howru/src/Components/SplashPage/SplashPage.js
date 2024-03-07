@@ -12,7 +12,7 @@ const SplashPage = () => {
 	return (
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-1">
+				<div class="col-md-1 p-0">
 					<Navbar />
 					<i class="bi bi-house"></i>
 				</div>
@@ -29,6 +29,13 @@ const SplashPage = () => {
 								Create one!
 							</Link>
 						</Typography>
+					</div>
+
+					<div class="row p-5">
+						<div class="col-md-12 py-5">
+							<h1 class="display-1 fw-bold text-center">HowRU.Life</h1>
+							<h6 class="text-center">Feel better with just a tap.</h6>
+						</div>
 					</div>
 				</div>
 			</div>

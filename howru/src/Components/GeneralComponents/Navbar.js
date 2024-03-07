@@ -4,7 +4,7 @@ import * as Icon from 'react-bootstrap-icons';
 
 export default function Navbar() {
     return (
-        <div class="bg-primary-subtle">
+        <div class="bg-primary-subtle min-vh-100 position-fixed">
                 <ul className="nav flex-column">
                     <li className="nav-item">
                         <a href="#">

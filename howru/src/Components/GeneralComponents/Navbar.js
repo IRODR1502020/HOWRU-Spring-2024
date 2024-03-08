@@ -1,13 +1,23 @@
 import React from 'react';
 import * as Icon from 'react-bootstrap-icons';
+import logo from "../../Assets/logo.png"
 // import "../../Styling/bootstrap.css"
 
 export default function Navbar() {
+
+	const logoStyle = {
+		height: "100px",
+		marginBottom: "2.5rem",
+		marginTop: "2rem",
+		marginLeft: "0.75rem",
+		width: "auto",
+	 };
+	
     return (
         <div class="bg-primary-subtle min-vh-100">
                 <ul className="nav flex-column">
                     <li className="nav-item">
-                        <img src="../../public/yoga.svg" />
+                        <img src={logo} style={logoStyle} />
                     </li>
                     <li className="nav-item">
                         <a href="#">

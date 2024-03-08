@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../Styling/bootstrap.css';
 
 export default function LoginWidget () {
+	const navigate = useNavigate();
+	
     return (
         <form>
             <div class="mb-3">
@@ -15,7 +18,7 @@ export default function LoginWidget () {
             </div>
             <button type="submit" class="btn btn-success">Login</button>
             <button type="submit" class="btn btn-primary">Sign Up</button>
-            <button type="button" class="btn btn-secondary">Forgot Password</button>
+            <button type="button" onClick={() => navigate('/forgot-password')} class="btn btn-secondary">Forgot Password</button>
         </form>
     )
 }

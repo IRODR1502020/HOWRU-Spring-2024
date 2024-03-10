@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import LoginWidget from './LoginWidget.js';
+import LoginWidget from './GeneralComponents/LoginWidget.js';
 
 
 const LoginPage = () => {

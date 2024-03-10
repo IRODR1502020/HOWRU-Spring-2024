@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import '../Styling/bootstrap.css';
+import '../../Styling/bootstrap.css';
 
 const LoginWidget = () => {
 	const navigate = useNavigate();

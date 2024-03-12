@@ -19,8 +19,8 @@ const LoginWidget = () => {
 					<input type="password" class="form-control" id="exampleInputPassword1"/>
 				</div>
 				<button type="submit" class="btn btn-success">Login</button>
-				<button type="submit" class="btn btn-primary">Sign Up</button>
-				<button type="button" onClick={() => navigate('/forgot-password')} class="btn btn-secondary">Forgot Password</button>
+				<button type="submit" onClick={() => navigate('/register')}class="btn btn-primary">Sign up for free now!</button>
+				<button type="button" onClick={() => navigate('/forgot-password')} class="btn btn-secondary">Forgot password? </button>
 			</form>
 			<Button variant="contained" onClick={() => navigate('/')} style={{ marginTop: '2rem' }}>
 				Return to Home

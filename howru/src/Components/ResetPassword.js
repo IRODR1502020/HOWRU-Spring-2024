@@ -24,7 +24,7 @@ const ResetPassword = () => {
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
-		marginBottom: "2rem",
+		marginBottom: "3rem",
 	};
 
 	const logoStyle = {

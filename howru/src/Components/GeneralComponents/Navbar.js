@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Icon from 'react-bootstrap-icons';
+import { House, Gear, InfoCircle, QuestionCircle} from 'react-bootstrap-icons';
 import logo from "../../Assets/logo.png"
 // import "../../Styling/bootstrap.css"
 
@@ -21,22 +21,22 @@ export default function Navbar() {
                     </li>
                     <li className="nav-item">
                         <a href="#">
-                            <Icon.House height="32" width="32"/>
+                            <House height="32" width="32"/>
                         </a>
                     </li>
                     <li className="nav-item">
                         <a href="#">
-                            <Icon.Gear height="32" width="32"/>
+                            <Gear height="32" width="32"/>
                         </a>
                     </li>
                     <li className="nav-item">
                         <a href="#">
-                            <Icon.InfoCircle height="32" width="32"/>
+                            <InfoCircle height="32" width="32"/>
                         </a>
                     </li>
                     <li className="nav-item">
                         <a href="#">
-                            <Icon.QuestionCircle height="32" width="32"/>
+                            <QuestionCircle height="32" width="32"/>
                         </a>
                     </li>
                 </ul>

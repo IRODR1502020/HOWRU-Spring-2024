@@ -4,7 +4,8 @@ import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../Config/firebase.js';
 import { useNavigate } from 'react-router-dom';
 import { Link as RouterLink } from "react-router-dom";
-import logo from "../Assets/logo.png"
+import logo from "../Assets/logo.png";
+import bg from "../Assets/waves_bg.jpg";
 
 const ResetPassword = () => {
 	const [email, setEmail] = useState('');
@@ -35,44 +36,50 @@ const ResetPassword = () => {
 	 };
 	
 	return (
-		<Box
-		  sx={{
-			display: 'flex',
-			flexDirection: 'column',
-			alignItems: 'center',
-			justifyContent: 'center',
-			height: '100vh',
-		  }}
+		<div style={{
+					backgroundImage: `url(${bg})`,
+					backgroundSize: 'cover',
+				}}
 		>
-		  <Box sx={{ width: '300px', mb: 4 }}>
-		  <div style={logoContainerStyle}>
-			<Link component={RouterLink} to="/login" underline="none">
-			  <img src={logo} alt="logo" style={logoStyle} />
-			</Link>
-		  </div>
-			{isEmailSent ? (
-			  <Typography variant="body1" align="center" mb={2}>
-				Password reset email sent. Please check your inbox for instructions!
-			  </Typography>
-			) : null}
-			<TextField
-			  label="Email"
-			  type="email"
-			  value={email}
-			  onChange={(e) => setEmail(e.target.value)}
-			  placeholder="Enter your email"
-			  fullWidth
-			  margin="normal"
-			  size="small"
-			/>
-			<Button variant="contained" onClick={handleResetPassword} fullWidth>
-			  Reset Password
-			</Button>
-			<Button variant="contained" onClick={() => navigate('/login')} fullWidth style={{ marginTop: '1rem' }}>
-			  Return to Login
-			</Button>
-		  </Box>
-		</Box>
+			<Box
+			  sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				justifyContent: 'center',
+				height: '100vh',
+			  }}
+			>
+			  <Box sx={{ width: '300px', mb: 4 }}>
+			  <div style={logoContainerStyle}>
+				<Link component={RouterLink} to="/login" underline="none">
+				  <img src={logo} alt="logo" style={logoStyle} />
+				</Link>
+			  </div>
+				{isEmailSent ? (
+				  <Typography variant="body1" align="center" mb={2}>
+					Password reset email sent. Please check your inbox for instructions!
+				  </Typography>
+				) : null}
+				<TextField
+				  label="Email"
+				  type="email"
+				  value={email}
+				  onChange={(e) => setEmail(e.target.value)}
+				  placeholder="Enter your email"
+				  fullWidth
+				  margin="normal"
+				  size="small"
+				/>
+				<Button variant="contained" onClick={handleResetPassword} fullWidth>
+				  Reset Password
+				</Button>
+				<Button variant="contained" onClick={() => navigate('/login')} fullWidth style={{ marginTop: '1rem' }}>
+				  Return to Login
+				</Button>
+			  </Box>
+			</Box>
+		</div>
 	);
 	
 }

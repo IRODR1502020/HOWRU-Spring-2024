@@ -3,23 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
 import { TextField, Button, Box, Typography, Link } from '@mui/material';
 import { Link as RouterLink } from "react-router-dom";
+import bg from "../Assets/waves_bg.jpg";
 import '../Styling/bootstrap.css';
 
 const RegisterPage = () => {
 	const [name, setName] = useState();
 	const [password, setPassword] = useState();
 	const [email, setEmail] = useState();
-	
 	const navigate = useNavigate();
-
-	const sectionStyle = {
-		height: '100vh',
-		backgroundColor: '#2779e2'
-	  };
-
-	const cardStyle = {
-		'border-radius': '15px'
-	};
 
 	const auth = getAuth();
 	const handleRegister = async () => {
@@ -35,58 +26,81 @@ const RegisterPage = () => {
 		}
 	}
 	
+	const sectionStyle = {
+		height: '100vh',
+		backgroundColor: '#2779e2'
+	  };
+
+	const cardStyle = {
+		'border-radius': '15px'
+	};
+	
 
 	return (
-		<Box
-		  sx={{
-			display: 'flex',
-			flexDirection: 'column',
-			alignItems: 'center',
-			justifyContent: 'center',
-			height: '100vh',
-		  }}
+		<div style={{
+				backgroundImage: `url(${bg})`,
+				backgroundSize: 'cover',
+			}}
 		>
-		  <Box sx={{ width: '300px', mb: 4 }}>
-			<TextField
-			  label="Email"
-			  type="email"
-			  value={email}
-			  onChange={(e) => setEmail(e.target.value)}
-			  placeholder="Enter your email"
-			  fullWidth
-			  margin="normal"
-			  size="small"
-			/>
-			<TextField
-			  label="Name"
-			  type="name"
-			  value={name}
-			  onChange={(e) => setName(e.target.value)}
-			  placeholder="Enter your Name"
-			  fullWidth
-			  margin="normal"
-			  size="small"
-			/>
+		
+			<Box
+			  sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				justifyContent: 'center',
+				height: '100vh',
+			  }}
+			>
+				<Box sx={{ 
+					width: '350px', 
+					mb: 4, 
+					bgcolor: 'white',
+					display: 'inherit',
+					flexDirection: 'inherit',
+					alignItems: 'inherit',
+					borderRadius: '15px',
+					}}
+				>
+				<h3 style={{ marginTop: '0.5rem' }}> Breathe a sigh of relief! </h3>
+				<TextField
+				  label="Email"
+				  type="email"
+				  value={email}
+				  onChange={(e) => setEmail(e.target.value)}
+				  placeholder="Enter your email"
+				  margin="normal"
+				  size="small"
+				/>
+				<TextField
+				  label="Name"
+				  type="name"
+				  value={name}
+				  onChange={(e) => setName(e.target.value)}
+				  placeholder="Enter your Name"
+				  margin="normal"
+				  size="small"
+				/>
 
-			<TextField
-			  label="Password"
-			  type="password"
-			  value={password}
-			  onChange={(e) => setPassword(e.target.value)}
-			  placeholder="Enter your password"
-			  fullWidth
-			  margin="normal"
-			  size="small"
-			/>
-
-			<Button variant="contained" onClick={handleRegister} fullWidth >
-		  		Create Account
-			</Button>
-			<Button variant="contained" onClick={() => navigate('/login')} fullWidth style={{ marginTop: '1rem' }} >
-				Return to Login
-			</Button>
-		  </Box>
-		</Box>
+				<TextField
+				  label="Password"
+				  type="password"
+				  value={password}
+				  onChange={(e) => setPassword(e.target.value)}
+				  placeholder="Enter your password"
+				  margin="normal"
+				  size="small"
+				/>
+				<div id="emailHelp" class="form-text">We'll never share your personal data.</div>
+				<Button variant="contained" onClick={handleRegister} style={{ marginTop: '0.5rem', width: '275px' }}>
+					Create Account
+				</Button>
+				<Button variant="contained" onClick={() => navigate('/login')} style={{ marginTop: '1rem', marginBottom: '1rem', width: '275px' }} >
+					Return to Login
+				</Button>
+			  </Box>
+			</Box>
+		</div>
 	);
 
 };

@@ -79,8 +79,11 @@ const RegisterPage = () => {
 			  size="small"
 			/>
 
-			<Button variant="contained" onClick={handleRegister} fullWidth>
+			<Button variant="contained" onClick={handleRegister} fullWidth >
 		  		Create Account
+			</Button>
+			<Button variant="contained" onClick={() => navigate('/login')} fullWidth style={{ marginTop: '1rem' }} >
+				Return to Login
 			</Button>
 		  </Box>
 		</Box>

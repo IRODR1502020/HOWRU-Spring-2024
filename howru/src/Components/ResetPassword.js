@@ -68,7 +68,7 @@ const ResetPassword = () => {
 			<Button variant="contained" onClick={handleResetPassword} fullWidth>
 			  Reset Password
 			</Button>
-			<Button variant="contained" onClick={() => navigate('/login')} fullWidth style={{ marginTop: '2rem' }}>
+			<Button variant="contained" onClick={() => navigate('/login')} fullWidth style={{ marginTop: '1rem' }}>
 			  Return to Login
 			</Button>
 		  </Box>

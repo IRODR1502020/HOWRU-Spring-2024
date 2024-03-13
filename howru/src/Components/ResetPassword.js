@@ -50,34 +50,43 @@ const ResetPassword = () => {
 				height: '100vh',
 			  }}
 			>
-			  <Box sx={{ width: '300px', mb: 4 }}>
-			  <div style={logoContainerStyle}>
-				<Link component={RouterLink} to="/login" underline="none">
-				  <img src={logo} alt="logo" style={logoStyle} />
-				</Link>
-			  </div>
-				{isEmailSent ? (
-				  <Typography variant="body1" align="center" mb={2}>
-					Password reset email sent. Please check your inbox for instructions!
-				  </Typography>
-				) : null}
-				<TextField
-				  label="Email"
-				  type="email"
-				  value={email}
-				  onChange={(e) => setEmail(e.target.value)}
-				  placeholder="Enter your email"
-				  fullWidth
-				  margin="normal"
-				  size="small"
-				/>
-				<Button variant="contained" onClick={handleResetPassword} fullWidth>
-				  Reset Password
-				</Button>
-				<Button variant="contained" onClick={() => navigate('/login')} fullWidth style={{ marginTop: '1rem' }}>
-				  Return to Login
-				</Button>
-			  </Box>
+				<Box sx={{ width: '300px', mb: 4 }}>
+					<div style={logoContainerStyle}>
+						<Link component={RouterLink} to="/login" underline="none">
+							<img src={logo} alt="logo" style={logoStyle} />
+						</Link>
+					</div>
+					{isEmailSent ? (
+					  <Typography variant="body1" align="center" mb={2}>
+						Password reset email sent. Please check your inbox for instructions!
+					  </Typography>
+					) : null}
+				</Box>
+				<Box sx={{
+					width: '350px',
+					bgcolor: 'white',
+					display: 'inherit',
+					flexDirection: 'inherit',
+					alignItems: 'inherit',
+					borderRadius: '15px',
+				}}>
+					<TextField
+					  label="Email"
+					  type="email"
+					  value={email}
+					  onChange={(e) => setEmail(e.target.value)}
+					  placeholder="Enter your email"
+					  margin="normal"
+					  size="small"
+					/>
+					<Button variant="contained" onClick={handleResetPassword} style={{ marginTop: '0.5rem', width: '275px' }} >
+					  Reset Password
+					</Button>
+					<Button variant="contained" onClick={() => navigate('/login')} style={{ marginTop: '1rem', marginBottom: '1rem', width: '275px' }}>
+					  Return to Login
+					</Button>
+				</Box>
+				
 			</Box>
 		</div>
 	);

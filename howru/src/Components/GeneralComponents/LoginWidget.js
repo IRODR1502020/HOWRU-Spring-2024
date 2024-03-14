@@ -15,7 +15,7 @@ const LoginWidget = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Redirect to dashboard or another page upon successful login
-                navigate('/dashboard');
+                navigate('/');
 				console.log(userCredential)
             })
             .catch((error) => {

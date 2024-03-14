@@ -1,44 +1,78 @@
-import React from 'react';
-import { Container, Button, Box } from '@mui/material';
+import React, { useState } from 'react';
+import { TextField, Button, Box, Container } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import '../../Styling/bootstrap.css';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const LoginWidget = () => {
-	const navigate = useNavigate();
-	
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const auth = getAuth();
+
+    const handleLogin = (e) => {
+        e.preventDefault(); // Prevent default form submission behavior
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Redirect to dashboard or another page upon successful login
+                navigate('/dashboard');
+				console.log(userCredential)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error(errorCode, errorMessage);
+                // Handle error, possibly display to user
+            });
+    };
+
     return (
-		<Container>
-			<form>
-				<div class="mb-3">
-					<label for="exampleInputEmail1" class="form-label">Email address</label>
-					<input type="email" placeholder="example@gmail.com" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-				</div>
-				<div class="mb-3">
-					<label for="exampleInputPassword1" class="form-label">Password</label>
-					<input type="password" class="form-control" id="exampleInputPassword1"/>
-				</div>
-				<Box sx={{ 
-					display: 'flex',
-					justifyContent: 'center',
-					}}
-				>
-					<button type="submit" class="btn btn-success" style={{ marginRight: '0.5rem' }}> Login </button>
-					<button type="submit" onClick={() => navigate('/register')}class="btn btn-primary" style={{ marginRight: '0.5rem' }}>Sign up for free now!</button>
-					<button type="button" onClick={() => navigate('/forgot-password')} class="btn btn-secondary">Forgot password? </button>
-				</Box>
-			</form>
-			<Box sx={{
-					display: 'flex',
-					justifyContent: 'center',
-				}}
-			>
-				<Button variant="contained" onClick={() => navigate('/')} style={{ marginTop: '1rem' }}>
-					Return to Home
-				</Button>
-			</Box>
-		</Container>
-		
+        <Container>
+            <form onSubmit={handleLogin}>
+                <div className="mb-3">
+                    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                    <TextField
+						className="form-control"
+                        label="Email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email"
+                        margin="normal"
+                        size="small"
+                    />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                    <TextField
+						className="form-control"
+                        label="Password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Enter your password"
+                        margin="normal"
+                        size="small"
+                    />
+                </div>
+                <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}>
+                    <Button class="btn btn-success" type="submit" variant="contained" style={{ marginRight: '0.5rem' }}>Login</Button>
+                    <Button class="btn btn-primary" onClick={() => navigate('/register')} variant="contained" style={{ marginRight: '0.5rem' }}>Sign up for free now!</Button>
+                    <Button class="btn btn-secondary" onClick={() => navigate('/forgot-password')} variant="contained">Forgot password?</Button>
+                </Box>
+            </form>
+            <Box sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginTop: '1rem',
+            }}>
+                <Button onClick={() => navigate('/')} variant="contained">Return to Home</Button>
+            </Box>
+        </Container>
     );
-}
+};
 
 export default LoginWidget;

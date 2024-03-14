@@ -14,8 +14,7 @@ export default function Navbar() {
 	 };
 	
     return (
-        <div class="bg-primary-subtle min-vh-100">
-                <ul className="nav flex-column">
+        <div class="bg-primary-subtle min-vh-100 nav d-flex flex-column">
                     <li className="nav-item">
                         <img src={logo} style={logoStyle} />
                     </li>
@@ -39,7 +38,6 @@ export default function Navbar() {
                             <QuestionCircle height="32" width="32"/>
                         </a>
                     </li>
-                </ul>
         </div>
     );
 }

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import "../../Styling/bootstrap.css"
 import Footer from "../GeneralComponents/Footer"
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const SplashPage = () => {
 	const navigate = useNavigate();
@@ -12,7 +13,7 @@ const SplashPage = () => {
 	return (
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-1 p-0">
+				<div class="col-md-1 bg-primary-subtle">
 					<Navbar />
 					<i class="bi bi-house"></i>
 				</div>

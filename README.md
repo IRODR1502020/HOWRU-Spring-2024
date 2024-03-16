@@ -6,3 +6,7 @@ When creating pages in the components folder here are some things to keep in min
 * Each page has its own folder within the components
 * Specific components for a page should be in a folder within the page's folder.
 * Components that are in many pages i.e. navigation menu should be within the GeneralComponents folder.
+
+## License
+
+This project is licensed under the [BSD-Clause 3](LICENSE).

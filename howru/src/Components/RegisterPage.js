@@ -1,18 +1,26 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
-import { TextField, Box } from '@mui/material';
+import { TextField, Box, Typography } from '@mui/material';
 import bg from "../Assets/waves_bg.jpg";
 import '../Styling/bootstrap.css';
 
 const RegisterPage = () => {
-	const [name, setName] = useState();
-	const [password, setPassword] = useState();
-	const [email, setEmail] = useState();
+	const [name, setName] = useState('');
+	const [password, setPassword] = useState('');
+	const [email, setEmail] = useState('');
+	const [missingInfoMessage, setMissingInfoMessage] = useState("");
 	const navigate = useNavigate();
 
 	const auth = getAuth();
-	const handleRegister = async () => {
+	const handleRegister = async (e) => {
+		e.preventDefault();
+		
+		if (!email || !password || !name) {
+			setMissingInfoMessage('Please fill out all the fields!');
+			return;
+		}
+		
 		try {
 			const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 			console.log("User Registered: ", userCredential.user);
@@ -41,7 +49,7 @@ const RegisterPage = () => {
 				backgroundSize: 'cover',
 			}}
 		>
-		
+		<form onSubmit={handleRegister}>
 			<Box
 			  sx={{
 				display: 'flex',
@@ -61,6 +69,7 @@ const RegisterPage = () => {
 					borderRadius: '15px',
 					}}
 				>
+				
 				<h3 style={{ marginTop: '0.5rem' }}> Breathe a sigh of relief! </h3>
 				<TextField
 				  label="Email"
@@ -91,14 +100,22 @@ const RegisterPage = () => {
 				  size="small"
 				/>
 				<div id="emailHelp" className="form-text">We'll never share your personal data.</div>
-				<button className="btn btn-success" variant="contained" onClick={handleRegister} style={{ marginTop: '0.5rem', width: '275px' }}>
+				<Box sx={{ margin: '0.5rem' }}>
+					{missingInfoMessage && (
+						<Typography variant="body2" color="error" align="center">
+							{missingInfoMessage}
+						</Typography>
+					)}
+					</Box>
+				<button className="btn btn-success" type="submit" variant="contained" style={{ marginTop: '0.5rem', width: '275px' }}>
 					Create Account
 				</button>
-				<button className="btn btn-secondary" variant="contained" onClick={() => navigate('/login')} style={{ marginTop: '1rem', marginBottom: '1rem', width: '275px' }} >
+				<button className="btn btn-secondary" type="button" variant="contained" onClick={() => navigate('/login')} style={{ marginTop: '1rem', marginBottom: '1rem', width: '275px' }} >
 					Return to Login
 				</button>
 			  </Box>
 			</Box>
+		</form>
 		</div>
 	);
 

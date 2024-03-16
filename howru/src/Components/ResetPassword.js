@@ -10,9 +10,17 @@ import bg from "../Assets/waves_bg.jpg";
 const ResetPassword = () => {
 	const [email, setEmail] = useState('');
 	const [isEmailSent, setIsEmailSent] = useState(false);
+	const [missingInfoMessage, setMissingInfoMessage] = useState("");
 	const navigate = useNavigate();
 	
-	const handleResetPassword = async () => {
+	const handleResetPassword = async (e) => {
+		e.preventDefault();
+		
+		if (!email) {
+			setMissingInfoMessage('Please enter a valid email to reset your password.');
+			return;
+		}
+		
 		try {
 			await sendPasswordResetEmail(auth, email);
 			setIsEmailSent(true);
@@ -41,6 +49,7 @@ const ResetPassword = () => {
 					backgroundSize: 'cover',
 				}}
 		>
+		<form onSubmit={handleResetPassword}>
 			<Box
 			  sx={{
 				display: 'flex',
@@ -57,7 +66,7 @@ const ResetPassword = () => {
 						</Link>
 					</div>
 					{isEmailSent ? (
-					  <Typography variant="body1" align="center" mb={2}>
+					  <Typography borderRadius='10px' bgcolor="white" color="error" variant="body2" align="center">
 						Password reset email sent. Please check your inbox for instructions!
 					  </Typography>
 					) : null}
@@ -80,14 +89,22 @@ const ResetPassword = () => {
 					  size="small"
 					/>
 					<div className="form-text"> If your account exists, you'll receive a reset link via email. </div>
-					<button className="btn btn-success" variant="contained" onClick={handleResetPassword} style={{ marginTop: '0.75rem', width: '275px' }} >
+					<Box sx={{ margin: '0.5rem' }}>
+					{missingInfoMessage && (
+						<Typography variant="body2" color="error" align="center">
+							{missingInfoMessage}
+						</Typography>
+					)}
+					</Box>
+					<button className="btn btn-success" type="submit" variant="contained" style={{ marginTop: '0.75rem', width: '275px' }} >
 					  Reset Password
 					</button>
-					<button className="btn btn-info" variant="contained" onClick={() => navigate('/login')} style={{ marginTop: '1rem', marginBottom: '1rem', width: '275px' }}>
+					<button className="btn btn-info" type="button" variant="contained" onClick={() => navigate('/login')} style={{ marginTop: '1rem', marginBottom: '1rem', width: '275px' }}>
 					  Return to Login
 					</button>
 				</Box>
 			</Box>
+		</form>
 		</div>
 	);
 	

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Box, Typography, Link } from '@mui/material';
+import { TextField, Box, Typography, Link } from '@mui/material';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../Config/firebase.js';
 import { useNavigate } from 'react-router-dom';
@@ -63,7 +63,7 @@ const ResetPassword = () => {
 					) : null}
 				</Box>
 				<Box sx={{
-					width: '350px',
+					width: '375px',
 					bgcolor: 'white',
 					display: 'inherit',
 					flexDirection: 'inherit',
@@ -79,14 +79,14 @@ const ResetPassword = () => {
 					  margin="normal"
 					  size="small"
 					/>
-					<Button variant="contained" onClick={handleResetPassword} style={{ marginTop: '0.5rem', width: '275px' }} >
+					<div className="form-text"> If your account exists, you'll receive a reset link via email. </div>
+					<button className="btn btn-success" variant="contained" onClick={handleResetPassword} style={{ marginTop: '0.75rem', width: '275px' }} >
 					  Reset Password
-					</Button>
-					<Button variant="contained" onClick={() => navigate('/login')} style={{ marginTop: '1rem', marginBottom: '1rem', width: '275px' }}>
+					</button>
+					<button className="btn btn-info" variant="contained" onClick={() => navigate('/login')} style={{ marginTop: '1rem', marginBottom: '1rem', width: '275px' }}>
 					  Return to Login
-					</Button>
+					</button>
 				</Box>
-				
 			</Box>
 		</div>
 	);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Box, Container } from '@mui/material';
+import { TextField, Box, Container } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
@@ -30,9 +30,9 @@ const LoginWidget = () => {
         <Container>
             <form onSubmit={handleLogin}>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                     <TextField
 						className="form-control"
+						id="userEmail"
                         label="Email"
                         type="email"
                         value={email}
@@ -43,9 +43,9 @@ const LoginWidget = () => {
                     />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                     <TextField
 						className="form-control"
+						id="userPassword"
                         label="Password"
                         type="password"
                         value={password}
@@ -59,9 +59,9 @@ const LoginWidget = () => {
                     display: 'flex',
                     justifyContent: 'center',
                 }}>
-                    <Button class="btn btn-success" type="submit" variant="contained" style={{ marginRight: '0.5rem' }}>Login</Button>
-                    <Button class="btn btn-primary" onClick={() => navigate('/register')} variant="contained" style={{ marginRight: '0.5rem' }}>Sign up for free now!</Button>
-                    <Button class="btn btn-secondary" onClick={() => navigate('/forgot-password')} variant="contained">Forgot password?</Button>
+                    <button className="btn btn-success" type="submit" variant="contained" style={{ marginRight: '0.5rem' }}>Login</button>
+                    <button className="btn btn-primary" onClick={() => navigate('/register')} variant="contained" style={{ marginRight: '0.5rem' }}>Sign up for free now!</button>
+                    <button className="btn btn-secondary" onClick={() => navigate('/forgot-password')} variant="contained">Forgot password?</button>
                 </Box>
             </form>
             <Box sx={{
@@ -69,7 +69,7 @@ const LoginWidget = () => {
                 justifyContent: 'center',
                 marginTop: '1rem',
             }}>
-                <Button onClick={() => navigate('/')} variant="contained">Return to Home</Button>
+                <button className="btn btn-info" onClick={() => navigate('/')} variant="contained">Return to Home</button>
             </Box>
         </Container>
     );

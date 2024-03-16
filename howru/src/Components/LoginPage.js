@@ -10,7 +10,7 @@ const LoginPage = () => {
 	
 	const logoStyle = {
 		height: "350px",
-		marginBottom: "-1rem",
+		marginBottom: "0.5rem",
 		marginTop: "-2rem",
 		width: "auto",
 	 };

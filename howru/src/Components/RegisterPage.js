@@ -4,6 +4,7 @@ import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
 import { TextField, Box, Typography } from '@mui/material';
 import bg from "../Assets/waves_bg.jpg";
 import '../Styling/bootstrap.css';
+import SkeletonForAllPages from './GeneralComponents/SkeletonForAllPages';
 
 const RegisterPage = () => {
 	const [name, setName] = useState('');
@@ -44,6 +45,7 @@ const RegisterPage = () => {
 	
 
 	return (
+		<SkeletonForAllPages>
 		<div style={{
 				backgroundImage: `url(${bg})`,
 				backgroundSize: 'cover',
@@ -117,6 +119,7 @@ const RegisterPage = () => {
 			</Box>
 		</form>
 		</div>
+		</SkeletonForAllPages>
 	);
 
 };

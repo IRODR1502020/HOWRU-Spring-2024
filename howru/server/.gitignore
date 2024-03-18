@@ -26,7 +26,6 @@ dist-ssr
 # ignore .env & credentials
 .env
 *.env
-serviceAccountKey-howrulife.json
 
 # ignore backup files, .bak
 *.bak

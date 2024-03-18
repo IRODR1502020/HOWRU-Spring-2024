@@ -9,10 +9,20 @@ const LoginWidget = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 	const [missingInfoMessage, setMissingInfoMessage] = useState("");
+	
+	async function loginUser(userEmailAndPass) {
+		return fetch('http://localhost:51234/api/auth/login', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(userEmailAndPass)
+		})
+		.then(data => data.json())
+	}
 
-    const auth = getAuth();
-
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
 		e.preventDefault();
 		
 		if (!email || !password) {
@@ -20,6 +30,7 @@ const LoginWidget = () => {
 			return;
 		}
 		
+		/*
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Redirect to dashboard or another page upon successful login
@@ -32,6 +43,16 @@ const LoginWidget = () => {
                 console.error(errorCode, errorMessage);
                 // Handle error, possibly display to user
             });
+		*/
+		
+		const userEmailAndPass = {}
+		userEmailAndPass['email'] = email;
+		userEmailAndPass['password'] = password;
+		
+		console.log(userEmailAndPass);
+		
+		await loginUser(userEmailAndPass);
+		
     };
 
     return (

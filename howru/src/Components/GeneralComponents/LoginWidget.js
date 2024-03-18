@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TextField, Box, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { Carousel, CarouselCaption, CarouselItem } from 'react-bootstrap';
 
 const LoginWidget = () => {
     const navigate = useNavigate();

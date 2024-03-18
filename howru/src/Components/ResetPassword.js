@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { TextField, Box, Typography, Link } from '@mui/material';
-import { sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from '../Config/firebase.js';
-import { useNavigate } from 'react-router-dom';
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import logo from "../Assets/logo.png";
 import bg from "../Assets/waves_bg.jpg";
 
@@ -13,7 +10,21 @@ const ResetPassword = () => {
 	const [missingInfoMessage, setMissingInfoMessage] = useState("");
 	const navigate = useNavigate();
 	
-	const handleResetPassword = async (e) => {
+	/* TODO: This function never returns! Figure it out. */
+	async function resetUserPassword(userEmail) {
+		return fetch('http://localhost:51234/api/auth/reset', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(userEmail)
+		})
+		.then(data => data.json())
+		setIsEmailSent(true);
+	}
+	
+	const handleReset = async (e) => {
 		e.preventDefault();
 		
 		if (!email) {
@@ -21,12 +32,22 @@ const ResetPassword = () => {
 			return;
 		}
 		
+		/*
 		try {
 			await sendPasswordResetEmail(auth, email);
 			setIsEmailSent(true);
 		} catch (error) {
 			console.error("Error sending reset email! Error code: ", error);
 		}
+		*/
+		
+		const userEmail = {}
+		userEmail['email'] = email;
+		
+		console.log(userEmail);
+		
+		await resetUserPassword(userEmail);
+		
 	};
 	
 	const logoContainerStyle = {
@@ -49,7 +70,7 @@ const ResetPassword = () => {
 					backgroundSize: 'cover',
 				}}
 		>
-		<form onSubmit={handleResetPassword}>
+		<form onSubmit={handleReset}>
 			<Box
 			  sx={{
 				display: 'flex',

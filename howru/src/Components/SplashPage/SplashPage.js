@@ -4,10 +4,7 @@ import { Button, Typography, Link } from "@mui/material";
 import Bootstrap from 'react-bootstrap';
 import Navbar from "../GeneralComponents/Navbar";
 import Footer from "../GeneralComponents/Footer"
-//import Carousel from "../GeneralComponents/Carousel.js";
-import { useNavigate } from "react-router-dom";
-import { Link as RouterLink } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth"
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
 
 const SplashPage = () => {

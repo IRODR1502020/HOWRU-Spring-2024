@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import {getAuth, createUserWithEmailAndPassword} from "firebase/auth";
 import { TextField, Box, Typography } from '@mui/material';
 import bg from "../Assets/waves_bg.jpg";
 import '../Styling/bootstrap.css';
@@ -11,8 +10,19 @@ const RegisterPage = () => {
 	const [email, setEmail] = useState('');
 	const [missingInfoMessage, setMissingInfoMessage] = useState("");
 	const navigate = useNavigate();
-
-	const auth = getAuth();
+	
+	async function registerUser(userData) {
+		return fetch('http://localhost:51234/api/auth/register', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(userData)
+		})
+		.then(data => data.json())
+	}
+	
 	const handleRegister = async (e) => {
 		e.preventDefault();
 		
@@ -21,6 +31,7 @@ const RegisterPage = () => {
 			return;
 		}
 		
+		/*
 		try {
 			const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 			console.log("User Registered: ", userCredential.user);
@@ -31,6 +42,16 @@ const RegisterPage = () => {
 		} catch(error) {
 			console.log(error);
 		}
+		*/
+		
+		const userData = {}
+		userData['email'] = email;
+		userData['password'] = password;
+		userData['name'] = name;
+		
+		console.log(userData);
+		
+		await registerUser(userData);
 	}
 	
 	const sectionStyle = {

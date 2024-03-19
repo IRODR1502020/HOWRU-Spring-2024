@@ -18,9 +18,10 @@ const LoginWidget = () => {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(userEmailAndPass)
-		})
-		.then(data => data.json())
+		}).then(response => response.json()
+		).catch(error => console.error('There was some kind of issue!'))
 	}
+		
 
     const handleLogin = async (e) => {
 		e.preventDefault();
@@ -47,11 +48,19 @@ const LoginWidget = () => {
 		
 		const userEmailAndPass = {}
 		userEmailAndPass['email'] = email;
-		userEmailAndPass['password'] = password;
+		userEmailAndPass['password'] = password; // TODO: hash the password, do not send in plaintext
 		
-		console.log(userEmailAndPass);
+		//console.log(userEmailAndPass);
 		
-		await loginUser(userEmailAndPass);
+		const userToken = await loginUser(userEmailAndPass);
+		//console.log(userToken);
+		
+		// Replace the quotation marks in the returned token via regex
+		userToken.token = userToken.token.replace(/["]/g, '')
+		userToken.userEmail = userToken.userEmail.replace(/["]/g, '')
+		
+		sessionStorage.setItem('login_token', userToken.token);
+		sessionStorage.setItem('user_email', userToken.userEmail);
 		
     };
 

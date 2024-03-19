@@ -21,7 +21,8 @@ const RegisterPage = () => {
 			},
 			body: JSON.stringify(userData)
 		})
-		.then(data => data.json())
+		.then(response => response.json()
+		).catch(error => console.error('There was some kind of issue!'))
 	}
 	
 	const handleRegister = async (e) => {
@@ -47,12 +48,20 @@ const RegisterPage = () => {
 		
 		const userData = {}
 		userData['email'] = email;
-		userData['password'] = password;
+		userData['password'] = password; // TODO: hash the password, do not send in plaintext
 		userData['name'] = name;
 		
-		console.log(userData);
+		//console.log(userData);
 		
-		await registerUser(userData);
+		const userToken = await registerUser(userData);
+		
+		// Replace the quotation marks in the returned token via regex
+		userToken.token = userToken.token.replace(/["]/g, '')
+		userToken.userEmail = userToken.userEmail.replace(/["]/g, '')
+		
+		sessionStorage.setItem('login_token', userToken.token);
+		sessionStorage.setItem('user_email', userToken.userEmail);
+		
 	}
 	
 	const sectionStyle = {

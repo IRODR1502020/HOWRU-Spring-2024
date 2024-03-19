@@ -10,7 +10,7 @@ const ResetPassword = () => {
 	const [missingInfoMessage, setMissingInfoMessage] = useState("");
 	const navigate = useNavigate();
 	
-	/* TODO: This function never returns! Figure it out. */
+	// TODO: set timeout or something to prevent the function from hanging/crashing after a long time
 	async function resetUserPassword(userEmail) {
 		return fetch('http://localhost:51234/api/auth/reset', {
 			method: 'POST',
@@ -20,8 +20,7 @@ const ResetPassword = () => {
 			},
 			body: JSON.stringify(userEmail)
 		})
-		.then(data => data.json())
-		setIsEmailSent(true);
+		.then(response => response.json())
 	}
 	
 	const handleReset = async (e) => {
@@ -44,9 +43,10 @@ const ResetPassword = () => {
 		const userEmail = {}
 		userEmail['email'] = email;
 		
-		console.log(userEmail);
+		//console.log(userEmail);
 		
-		await resetUserPassword(userEmail);
+		await resetUserPassword(userEmail)
+		.then(setIsEmailSent(true));
 		
 	};
 	

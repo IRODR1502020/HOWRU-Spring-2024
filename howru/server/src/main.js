@@ -27,14 +27,18 @@ app.get("/api/health", (req, res) => {
 /* This is the API endpoint for registering a new user */
 app.post("/api/auth/register", async (req, res) => {
 	const { email, name, password } = req.body;
-	console.log(email, name, password);
+	//console.log(email, name, password);
 	
 	createUserWithEmailAndPassword(auth, email, password)
 	  .then((userCredential) => {
 		// Signed up 
-		// Add the users name into a firestore table for retrieval later
-		const user = userCredential.user;
-		res.status(200).json( 'User created successfully.' );
+		// TODO: Add the users name into a firestore table for retrieval later
+		// TODO: Before creation, check if the user already exists
+		
+		const userEmail = userCredential.user.email;
+		const token = generateToken(128);
+		const successMessage = "User created successfully."
+		res.status(200).json({ successMessage, userEmail, token })
 	  })
 	  .catch((error) => {
 		const errorCode = error.code;
@@ -51,10 +55,12 @@ app.post('/api/auth/login', (req, res) => {
 	
 	signInWithEmailAndPassword(auth, email, password)
 	  .then((userCredential) => {
-		// Signed in 
-		const user = userCredential.user;
+		// Signed in
+		// TODO: retrieve name from the firestore table and send it to the client 
+		
+		const userEmail = userCredential.user.email;
 		const token = generateToken(128);
-		res.status(200).json( {token} );
+		res.status(200).json( {userEmail, token} );
 	  })
 	  .catch((error) => {
 		const errorCode = error.code;
@@ -68,6 +74,7 @@ app.post('/api/auth/login', (req, res) => {
 app.post('/api/auth/reset', (req, res) => {
 	const { email } = req.body;
 	//console.log(email);
+	// TODO: Check if account with email exists first
 	
 	sendPasswordResetEmail(auth, email);
   

@@ -7,7 +7,6 @@ import Footer from "../GeneralComponents/Footer"
 //import Carousel from "../GeneralComponents/Carousel.js";
 import { useNavigate } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth"
 import { Container, Row, Col } from 'react-bootstrap';
 import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
 
@@ -58,12 +57,12 @@ const SplashPage = () => {
 
 							<div className="col-md-6 p-5">
 								<h3 className="display-4">Features</h3>
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">An item</li>
-									<li class="list-group-item">A second item</li>
-									<li class="list-group-item">A third item</li>
-									<li class="list-group-item">A fourth item</li>
-									<li class="list-group-item">And a fifth one</li>
+								<ul className="list-group list-group-flush">
+									<li className="list-group-item">An item</li>
+									<li className="list-group-item">A second item</li>
+									<li className="list-group-item">A third item</li>
+									<li className="list-group-item">A fourth item</li>
+									<li className="list-group-item">And a fifth one</li>
 								</ul>
 							</div>
 						</div>

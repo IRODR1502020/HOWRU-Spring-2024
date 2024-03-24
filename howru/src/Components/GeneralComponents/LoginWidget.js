@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Box, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { Carousel, CarouselCaption, CarouselItem } from 'react-bootstrap';
 
 const LoginWidget = () => {
@@ -56,11 +55,16 @@ const LoginWidget = () => {
 		//console.log(userToken);
 		
 		// Replace the quotation marks in the returned token via regex
-		userToken.token = userToken.token.replace(/["]/g, '')
-		userToken.userEmail = userToken.userEmail.replace(/["]/g, '')
-		
-		sessionStorage.setItem('login_token', userToken.token);
-		sessionStorage.setItem('user_email', userToken.userEmail);
+		if(userToken.email === undefined) {
+			return;
+		}
+		else {
+			userToken.token = userToken.token.replace(/["]/g, '')
+			userToken.userEmail = userToken.userEmail.replace(/["]/g, '')
+			
+			sessionStorage.setItem('login_token', userToken.token);
+			sessionStorage.setItem('user_email', userToken.userEmail);
+		}
 		
     };
 

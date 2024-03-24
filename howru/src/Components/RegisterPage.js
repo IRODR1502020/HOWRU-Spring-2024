@@ -55,12 +55,17 @@ const RegisterPage = () => {
 		
 		const userToken = await registerUser(userData);
 		
-		// Replace the quotation marks in the returned token via regex
-		userToken.token = userToken.token.replace(/["]/g, '')
-		userToken.userEmail = userToken.userEmail.replace(/["]/g, '')
-		
-		sessionStorage.setItem('login_token', userToken.token);
-		sessionStorage.setItem('user_email', userToken.userEmail);
+		if(userToken.email === undefined) {
+			return;
+		}
+		else { 
+			// Replace the quotation marks in the returned token via regex
+			userToken.token = userToken.token.replace(/["]/g, '')
+			userToken.userEmail = userToken.userEmail.replace(/["]/g, '')
+			
+			sessionStorage.setItem('login_token', userToken.token);
+			sessionStorage.setItem('user_email', userToken.userEmail);
+		}
 		
 	}
 	

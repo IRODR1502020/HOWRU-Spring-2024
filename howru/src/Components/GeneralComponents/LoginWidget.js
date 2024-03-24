@@ -9,12 +9,13 @@ const LoginWidget = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 	const [missingInfoMessage, setMissingInfoMessage] = useState("");
+	const [badCredentialsMessage, setBadCredentialsMessage] = useState("");
 	
 	useEffect(() => {
 		if (sessionStorage.getItem("login_token")) {
 			navigate("/dashboard");
 		}
-	}, []);
+	});
 	
 	async function loginUser(userEmailAndPass) {
 		return fetch('http://localhost:51234/api/auth/login', {
@@ -37,21 +38,6 @@ const LoginWidget = () => {
 			return;
 		}
 		
-		/*
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Redirect to dashboard or another page upon successful login
-                navigate('/dashboard');
-				console.log(userCredential)
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.error(errorCode, errorMessage);
-                // Handle error, possibly display to user
-            });
-		*/
-		
 		const userEmailAndPass = {}
 		userEmailAndPass['email'] = email;
 		userEmailAndPass['password'] = password; // TODO: hash the password, do not send in plaintext
@@ -62,8 +48,8 @@ const LoginWidget = () => {
 		
 		//console.log(userToken);
 		
-		// Replace the quotation marks in the returned token via regex
-		if(userToken.userEmail === undefined) {
+		if(userToken.errorCode === 'auth/invalid-credential') {
+			setBadCredentialsMessage('Incorrect email or password!');
 			return;
 		}
 		else {
@@ -111,6 +97,13 @@ const LoginWidget = () => {
 						<Typography variant="body2" color="error" align="center">
 							{missingInfoMessage}
 						</Typography>
+						
+						
+					)}
+					{badCredentialsMessage && (
+						<Typography variant="body2" color="error" align="center">
+							{badCredentialsMessage}
+						</Typography>	
 					)}
 				</Box>
                 <Box sx={{

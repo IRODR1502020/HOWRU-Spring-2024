@@ -17,7 +17,7 @@ const RegisterPage = () => {
 		if (sessionStorage.getItem("login_token")) {
 			navigate("/dashboard");
 		}
-	}, []);
+	});
 	
 	async function registerUser(userData) {
 		return fetch('http://localhost:51234/api/auth/register', {
@@ -72,6 +72,7 @@ const RegisterPage = () => {
 			
 			sessionStorage.setItem('login_token', userToken.token);
 			sessionStorage.setItem('user_email', userToken.userEmail);
+			navigate("/dashboard");
 		}
 		
 	}

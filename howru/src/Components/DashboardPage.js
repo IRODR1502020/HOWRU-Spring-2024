@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 
+
 const DashboardPage = () => {
 	const navigate = useNavigate();
 	
@@ -8,11 +9,10 @@ const DashboardPage = () => {
 		<div> 
 			hello world
 			
-			<button variant="contained" onClick={() => navigate('/my-profile')}>
+			<button variant="contained" onClick={() => navigate('my-profile')}>
 				Click me to see your profile.
 			</button>
 			
-			<Outlet />
 		</div>
 		
 	);

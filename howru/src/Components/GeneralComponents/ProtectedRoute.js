@@ -1,14 +1,15 @@
-import { useNavigate, Outlet } from 'react-router-dom';
+import React, { useMemo } from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
+
 
 const ProtectedRoute = () => {
-	const navigate = useNavigate();
 	
-	return (
-		<div>
-			this is a protected route!
+	if (!sessionStorage.getItem("login_token")) return <Navigate to="/login" />;
+	else {
+		return (
 			<Outlet />
-		</div>
-	);
+		);
+	}
 	
 }
 

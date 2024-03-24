@@ -4,6 +4,7 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import logo from "../Assets/logo.png";
 import bg from "../Assets/waves_bg.jpg";
 
+
 const ResetPassword = () => {
 	const [email, setEmail] = useState('');
 	const [isEmailSent, setIsEmailSent] = useState(false);

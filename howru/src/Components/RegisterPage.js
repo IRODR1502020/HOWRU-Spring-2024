@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Box, Typography } from '@mui/material';
 import bg from "../Assets/waves_bg.jpg";
 import '../Styling/bootstrap.css';
 import SkeletonForAllPages from './GeneralComponents/SkeletonForAllPages';
+
 
 const RegisterPage = () => {
 	const [name, setName] = useState('');
@@ -11,6 +12,12 @@ const RegisterPage = () => {
 	const [email, setEmail] = useState('');
 	const [missingInfoMessage, setMissingInfoMessage] = useState("");
 	const navigate = useNavigate();
+	
+	useEffect(() => {
+		if (sessionStorage.getItem("login_token")) {
+			navigate("/dashboard");
+		}
+	}, []);
 	
 	async function registerUser(userData) {
 		return fetch('http://localhost:51234/api/auth/register', {
@@ -55,7 +62,7 @@ const RegisterPage = () => {
 		
 		const userToken = await registerUser(userData);
 		
-		if(userToken.email === undefined) {
+		if(userToken.userEmail === undefined) {
 			return;
 		}
 		else { 

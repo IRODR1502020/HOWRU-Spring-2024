@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Box, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Carousel, CarouselCaption, CarouselItem } from 'react-bootstrap';
+
 
 const LoginWidget = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 	const [missingInfoMessage, setMissingInfoMessage] = useState("");
+	
+	useEffect(() => {
+		if (sessionStorage.getItem("login_token")) {
+			navigate("/dashboard");
+		}
+	}, []);
 	
 	async function loginUser(userEmailAndPass) {
 		return fetch('http://localhost:51234/api/auth/login', {
@@ -52,10 +59,11 @@ const LoginWidget = () => {
 		//console.log(userEmailAndPass);
 		
 		const userToken = await loginUser(userEmailAndPass);
+		
 		//console.log(userToken);
 		
 		// Replace the quotation marks in the returned token via regex
-		if(userToken.email === undefined) {
+		if(userToken.userEmail === undefined) {
 			return;
 		}
 		else {
@@ -64,10 +72,11 @@ const LoginWidget = () => {
 			
 			sessionStorage.setItem('login_token', userToken.token);
 			sessionStorage.setItem('user_email', userToken.userEmail);
+			navigate("/dashboard");
 		}
 		
     };
-
+	
     return (
         <Container>
             <form onSubmit={handleLogin}>

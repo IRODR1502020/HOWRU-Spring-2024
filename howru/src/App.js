@@ -8,6 +8,7 @@ import ProtectedRoute from './Components/GeneralComponents/ProtectedRoute.js';
 import DashboardPage from './Components/DashboardPage.js';
 import ProfilePage from './Components/ProfilePage.js';
 
+
 const App = () => {
 
     return (

@@ -40,19 +40,6 @@ const RegisterPage = () => {
 			return;
 		}
 		
-		/*
-		try {
-			const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-			console.log("User Registered: ", userCredential.user);
-			const userData = {
-				email: userCredential.user.email // Accessing email directly from userCredential.user
-			};
-			navigate("/");
-		} catch(error) {
-			console.log(error);
-		}
-		*/
-		
 		const userData = {}
 		userData['email'] = email;
 		userData['password'] = password; // TODO: hash the password, do not send in plaintext
@@ -62,15 +49,18 @@ const RegisterPage = () => {
 		
 		const userToken = await registerUser(userData);
 		
+		// TODO: handle error if user account already exists
 		if(userToken.userEmail === undefined) {
 			return;
 		}
 		else { 
 			// Replace the quotation marks in the returned token via regex
-			userToken.token = userToken.token.replace(/["]/g, '')
-			userToken.userEmail = userToken.userEmail.replace(/["]/g, '')
+			userToken.name = userToken.name.replace(/["]/g, '');
+			userToken.token = userToken.token.replace(/["]/g, '');
+			userToken.userEmail = userToken.userEmail.replace(/["]/g, '');
 			
 			sessionStorage.setItem('login_token', userToken.token);
+			sessionStorage.setItem('user_name', userToken.name);
 			sessionStorage.setItem('user_email', userToken.userEmail);
 			navigate("/dashboard");
 		}

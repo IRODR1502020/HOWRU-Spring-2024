@@ -5,7 +5,7 @@ import { auth,
 	signInWithEmailAndPassword, 
 	createUserWithEmailAndPassword,
 	sendPasswordResetEmail,	
-	FbApp, db, storage, collection } from './firebase.js';
+	FbApp, db, storage, collection, doc, setDoc, addDoc } from './firebase.js';
 import generateToken from "./Utilities/LoginToken.js";
 
 const app = express();
@@ -27,18 +27,23 @@ app.get("/api/health", (req, res) => {
 /* This is the API endpoint for registering a new user */
 app.post("/api/auth/register", async (req, res) => {
 	const { email, name, password } = req.body;
+	const newUserDoc = {};
+	newUserDoc['email'] = email;
+	newUserDoc['name'] = name;
+	
 	//console.log(email, name, password);
+	
+	// TODO: Before creation, check if the user already exists
+	await addDoc(collection(db, "Users"), newUserDoc);
 	
 	createUserWithEmailAndPassword(auth, email, password)
 	  .then((userCredential) => {
 		// Signed up 
-		// TODO: Add the users name into a firestore table for retrieval later
-		// TODO: Before creation, check if the user already exists
 		
 		const userEmail = userCredential.user.email;
 		const token = generateToken(128);
 		const successMessage = "User created successfully."
-		res.status(200).json({ successMessage, userEmail, token })
+		res.status(200).json({ successMessage, name, userEmail, token })
 	  })
 	  .catch((error) => {
 		const errorCode = error.code;

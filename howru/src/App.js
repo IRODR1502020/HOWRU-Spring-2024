@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './Components/LoginPage/LoginPage.js';
 import SplashPage from './Components/SplashPage/SplashPage.js'
-import RegisterPage from './Components/RegisterPage.js';
-import ResetPasswordPage from './Components/ResetPassword.js';
+import RegisterPage from './Components/RegisterPage/RegisterPage.js';
+import ResetPasswordPage from './Components/ResetPassword/ResetPassword.js';
 import ProtectedRoute from './Components/GeneralComponents/ProtectedRoute.js';
 import DashboardPage from './Components/DashboardPage/DashboardPage.js';
 import ProfilePage from './Components/ProfilePage/ProfilePage.js';

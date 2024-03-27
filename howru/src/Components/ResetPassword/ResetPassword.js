@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { TextField, Box, Typography, Link } from '@mui/material';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import logo from "../Assets/logo.png";
-import bg from "../Assets/waves_bg.jpg";
+import logo from "../../Assets/logo.png";
+import bg from "../../Assets/waves_bg.jpg";
 
 
 const ResetPassword = () => {

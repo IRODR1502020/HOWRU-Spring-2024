@@ -27,14 +27,7 @@ app.get("/api/health", (req, res) => {
 /* This is the API endpoint for registering a new user */
 app.post("/api/auth/register", async (req, res) => {
 	const { email, name, password } = req.body;
-	const newUserDoc = {};
-	newUserDoc['email'] = email;
-	newUserDoc['name'] = name;
-	
 	//console.log(email, name, password);
-	
-	// TODO: Before creation, check if the user already exists
-	await addDoc(collection(db, "Users"), newUserDoc);
 	
 	createUserWithEmailAndPassword(auth, email, password)
 	  .then((userCredential) => {
@@ -43,12 +36,19 @@ app.post("/api/auth/register", async (req, res) => {
 		const userEmail = userCredential.user.email;
 		const token = generateToken(128);
 		const successMessage = "User created successfully."
+		const userRef = collection(db, "Users");
+		addDoc(userRef, {"email": email, "name": name})
+		  .then((docRef) => {
+			const newDocId = docRef.id;
+			console.log(newDocId);
+		  })
 		res.status(200).json({ successMessage, name, userEmail, token })
 	  })
 	  .catch((error) => {
-		const errorCode = error.code;
-		const errorMessage = error.message;
-		res.status(401).json({ errorCode, errorMessage });
+		if (error.code === "auth/email-already-in-use") {
+			const errorMessage = "Bad request. Check if user account exists already."
+			res.status(400).json({ errorMessage });
+		}
 	  });
 	
 });

@@ -14,7 +14,7 @@ export default function Navbar() {
 	};
 	
     return (
-        <div className="nav d-flex flex-column">
+        <div className="nav d-flex flex-column bg-secondary-subtle m-2 rounded p-4">
 			<li className="nav-item">
 				<img src={logo} alt="logo" style={logoStyle} />
 			</li>

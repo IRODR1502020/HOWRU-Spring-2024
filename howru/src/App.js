@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './Components/LoginPage.js';
+import LoginPage from './Components/LoginPage/LoginPage.js';
 import SplashPage from './Components/SplashPage/SplashPage.js'
 import RegisterPage from './Components/RegisterPage.js';
 import ResetPasswordPage from './Components/ResetPassword.js';
 import ProtectedRoute from './Components/GeneralComponents/ProtectedRoute.js';
-import DashboardPage from './Components/DashboardPage.js';
-import ProfilePage from './Components/ProfilePage.js';
+import DashboardPage from './Components/DashboardPage/DashboardPage.js';
+import ProfilePage from './Components/ProfilePage/ProfilePage.js';
 
 
 const App = () => {

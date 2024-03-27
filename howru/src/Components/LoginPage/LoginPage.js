@@ -1,10 +1,10 @@
 import React from "react";
-import LoginWidget from './GeneralComponents/LoginWidget.js';
+import LoginWidget from '../GeneralComponents/LoginWidget.js';
 import { Box } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import logo from "../Assets/logo.png"
 import bg from "../Assets/waves_bg.jpg";
-import SkeletonForAllPages from './GeneralComponents/SkeletonForAllPages.js';
+import SkeletonForAllPages from '../GeneralComponents/SkeletonForAllPages.js';
 
 const LoginPage = () => {
 	const navigate = useNavigate();

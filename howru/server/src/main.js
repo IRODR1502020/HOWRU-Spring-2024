@@ -35,18 +35,16 @@ app.post("/api/auth/register", async (req, res) => {
 		
 		const userEmail = userCredential.user.email;
 		const token = generateToken(128);
-		const successMessage = "User created successfully."
-		const userRef = collection(db, "Users");
-		addDoc(userRef, {"email": email, "name": name})
-		  .then((docRef) => {
-			const newDocId = docRef.id;
-			console.log(newDocId);
+		const userDocRef = doc(db, "Users", userCredential.user.uid );
+		setDoc(userDocRef, {"email": email, "name": name})
+		  .then(() => {
+			  console.log("User successfully created:", userCredential.user.uid);
 		  })
-		res.status(200).json({ successMessage, name, userEmail, token })
+		res.status(200).json({ name, userEmail, token })
 	  })
 	  .catch((error) => {
 		if (error.code === "auth/email-already-in-use") {
-			const errorMessage = "Bad request. Check if user account exists already."
+			const errorMessage = "Bad request. Check if user account exists already, or check server connection."
 			res.status(400).json({ errorMessage });
 		}
 	  });

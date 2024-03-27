@@ -5,7 +5,7 @@ import { auth,
 	signInWithEmailAndPassword, 
 	createUserWithEmailAndPassword,
 	sendPasswordResetEmail,	
-	FbApp, db, storage, collection, doc, setDoc, addDoc } from './firebase.js';
+	db, collection, doc, setDoc, getDoc } from './firebase.js';
 import generateToken from "./Utilities/LoginToken.js";
 
 const app = express();
@@ -55,20 +55,30 @@ app.post("/api/auth/register", async (req, res) => {
 app.post('/api/auth/login', (req, res) => {
 	const { email, password } = req.body;
 	//console.log(email, password);
-	
+
 	signInWithEmailAndPassword(auth, email, password)
 	  .then((userCredential) => {
 		// Signed in
-		// TODO: retrieve name from the firestore table and send it to the client 
+		//console.log(userCredential)
 		
-		const userEmail = userCredential.user.email;
-		const token = generateToken(128);
-		res.status(200).json( {userEmail, token} );
+		const userDocRef = doc(db, "Users", userCredential.user.uid );
+		getDoc(userDocRef)
+		  .then((userDocRef) => {
+			console.log("User document accessed:", userCredential.user.uid);
+			return userDocRef.data().name
+		  })
+		  .then((name) => {
+			const userName = name;
+			const userEmail = userCredential.user.email;
+			const token = generateToken(128);
+			return res.status(200).json( { userName, userEmail, token} );
+		  })
 	  })
 	  .catch((error) => {
-		const errorCode = error.code;
-		const errorMessage = error.message;
-		res.status(401).json({ errorCode, errorMessage });
+		if (error.code === "auth/invalid-credential") {
+			const errorMessage = "Incorrect credentials. Try again."
+			res.status(401).json({ errorMessage });
+		}
 	  });
   
 });

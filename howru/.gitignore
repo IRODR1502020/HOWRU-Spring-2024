@@ -29,6 +29,3 @@ yarn-error.log*
 *.env
 .env
 
-# Ignore firebase config files
-### We can remove it later once we figure out dotenv ###
-firebase.js

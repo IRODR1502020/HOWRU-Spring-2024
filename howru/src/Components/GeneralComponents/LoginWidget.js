@@ -48,16 +48,18 @@ const LoginWidget = () => {
 		
 		//console.log(userToken);
 		
-		if(userToken.errorCode === 'auth/invalid-credential') {
+		if(userToken.userEmail === undefined) {
 			setBadCredentialsMessage('Incorrect email or password!');
 			return;
 		}
 		else {
 			userToken.token = userToken.token.replace(/["]/g, '')
 			userToken.userEmail = userToken.userEmail.replace(/["]/g, '')
+			userToken.userName = userToken.userName.replace(/["]/g, '')
 			
 			sessionStorage.setItem('login_token', userToken.token);
 			sessionStorage.setItem('user_email', userToken.userEmail);
+			sessionStorage.setItem('name', userToken.userName);
 			navigate("/dashboard");
 		}
 		

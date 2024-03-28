@@ -10,7 +10,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
 import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
 import "./SplashPageStyling/SplashPageStyling.scss"
-
+import Carousel from 'react-bootstrap/Carousel';
 
 const SplashPage = () => {
 	const navigate = useNavigate();
@@ -39,93 +39,32 @@ const SplashPage = () => {
 
 				<div className="row">
 					<div className="row">
-						{/* START OF CAROUSEL/HEADER */}
 						<div className="col-md-12 customCarousel">
-							{/* TEMPORARILY REMOVING AS I IMPLEMENT CAROUSEL
-							<h1 className="display-1 fw-bold text-center">HowRU.Life</h1>
-							<h6 className="text-center">Feel better with just a tap.</h6> 
-							*/}
-							
-
-							<div id="demo"></div>
-
-								<div class="details" id="details-even">
-									<div class="place-box">
-										<div class="text">Switzerland Alps</div>
-									</div>
-									<div class="title-box-1"><div class="title-1">SAINT</div></div>
-									<div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
-									<div class="desc">
-										Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. It's a hidden gem for backcountry skiing in winter and boasts lush trails for hiking and mountain biking during the warmer months.
-									</div>
-									<div class="cta">
-										<button class="bookmark">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											viewBox="0 0 24 24"
-											fill="currentColor"
-										>
-											<path
-											fill-rule="evenodd"
-											d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z"
-											clip-rule="evenodd"
-											/>
-										</svg>
-										</button>
-										<button class="discover">Discover Location</button>
-									</div>
-								</div>
-
-								<div class="details" id="details-odd">
-									<div class="place-box">
-										<div class="text">Switzerland Alps</div>
-									</div>
-									<div class="title-box-1"><div class="title-1">SAINT </div></div>
-									<div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
-									<div class="desc">
-										Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. It's a hidden gem for backcountry skiing in winter and boasts lush trails for hiking and mountain biking during the warmer months.
-									</div>
-									<div class="cta">
-										<button class="bookmark">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											viewBox="0 0 24 24"
-											fill="currentColor"
-										>
-											<path
-											fill-rule="evenodd"
-											d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z"
-											clip-rule="evenodd"
-											/>
-										</svg>
-										</button>
-										<button class="discover">Discover Location</button>
-									</div>
-								</div>
-
-							{/* <div class="pagination" id="pagination">
-								<div class="arrow arrow-left">
-									<svg
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-									>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M15.75 19.5L8.25 12l7.5-7.5"
-									/>
-									</svg>
-								</div>
-
-								<div class="progress-sub-container" >
-									<div class="progress-sub-background" >
-										<div class="progress-sub-foreground" ></div>
-									</div>
-								</div>
-								<div class="slide-numbers" id="slide-numbers"></div>
-							</div> */}
+							<Carousel>
+								<Carousel.Item>
+									<h1>First Slide</h1>
+									<Carousel.Caption>
+										<h3>First slide label</h3>
+										<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+									</Carousel.Caption>
+								</Carousel.Item>
+								<Carousel.Item>
+									<h1>Second Slide</h1>
+									<Carousel.Caption>
+										<h3>Second slide label</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+									</Carousel.Caption>
+								</Carousel.Item>
+								<Carousel.Item>
+									<h1>Third Slice</h1>
+									<Carousel.Caption>
+										<h3>Third slide label</h3>
+										<p>
+										Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+										</p>
+									</Carousel.Caption>
+								</Carousel.Item>
+							</Carousel>
 						</div>
 						{/* END OF CAROUSEL/HEADER */}
 					</div>

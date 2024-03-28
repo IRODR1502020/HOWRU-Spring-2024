@@ -10,7 +10,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
 import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
 import "./SplashPageStyling/SplashPageStyling.scss"
-import Carousel from 'react-bootstrap/Carousel';
+import { Carousel } from "react-bootstrap";
 
 const SplashPage = () => {
 	const navigate = useNavigate();
@@ -39,32 +39,33 @@ const SplashPage = () => {
 
 				<div className="row">
 					<div className="row">
+						{/* START OF CAROUSEL/HEADER */}
 						<div className="col-md-12 customCarousel">
-							<Carousel>
-								<Carousel.Item>
-									<h1>First Slide</h1>
-									<Carousel.Caption>
-										<h3>First slide label</h3>
-										<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-									</Carousel.Caption>
-								</Carousel.Item>
-								<Carousel.Item>
-									<h1>Second Slide</h1>
-									<Carousel.Caption>
-										<h3>Second slide label</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-									</Carousel.Caption>
-								</Carousel.Item>
-								<Carousel.Item>
-									<h1>Third Slice</h1>
-									<Carousel.Caption>
-										<h3>Third slide label</h3>
-										<p>
-										Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-										</p>
-									</Carousel.Caption>
-								</Carousel.Item>
-							</Carousel>
+						<Carousel>
+							<Carousel.Item>
+								<h1>First Slide</h1>
+								<Carousel.Caption>
+									<h3>First slide label</h3>
+									<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+								</Carousel.Caption>
+							</Carousel.Item>
+							<Carousel.Item>
+								<h1>Second Slide</h1>
+								<Carousel.Caption>
+									<h3>Second slide label</h3>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								</Carousel.Caption>
+							</Carousel.Item>
+							<Carousel.Item>
+								<h1>Third Slice</h1>
+								<Carousel.Caption>
+									<h3>Third slide label</h3>
+									<p>
+									Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+									</p>
+								</Carousel.Caption>
+							</Carousel.Item>
+						</Carousel>
 						</div>
 						{/* END OF CAROUSEL/HEADER */}
 					</div>

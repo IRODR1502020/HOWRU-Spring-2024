@@ -1,10 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { House, Gear, InfoCircle, QuestionCircle} from 'react-bootstrap-icons';
 import logo from "../../Assets/logo.png"
 // import "../../Styling/bootstrap.css"
 
 export default function Navbar() {
-
+	const navigate = useNavigate();
 	const logoStyle = {
 		height: "100px",
 		marginBottom: "2.5rem",
@@ -19,7 +20,7 @@ export default function Navbar() {
 				<img src={logo} alt="logo" style={logoStyle} />
 			</li>
 			<li className="nav-item">
-				<a href="#">
+				<a href="#" onClick={() => navigate("/")}>
 					<House height="32" width="32"/>
 				</a>
 			</li>

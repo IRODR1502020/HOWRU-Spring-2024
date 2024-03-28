@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@mui/icons-material": "^5.15.14",
+    "react-swipeable-views-react-18-fix": "^0.14.1"
+  }
+}

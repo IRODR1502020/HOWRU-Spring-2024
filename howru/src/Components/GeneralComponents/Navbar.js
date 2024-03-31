@@ -11,7 +11,7 @@ export default function Navbar() {
 		marginTop: "2rem",
 		marginLeft: "0.75rem",
 		width: "auto",
-	};
+	}
 	
     return (
         <div className="nav d-flex flex-column bg-secondary-subtle m-2 rounded p-4">

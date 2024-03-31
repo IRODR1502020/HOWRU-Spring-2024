@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
 import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
-import "./SplashPageStyling/SplashPageStyling.scss"
+import "./SplashPageStyling/SplashPageStyling.scss";
+import Carousel from 'react-bootstrap/Carousel';
 
 
 const SplashPage = () => {
@@ -20,114 +21,50 @@ const SplashPage = () => {
 		"background-color": "#ecf3fe",
 	}
 
+	const buttonPurpleBackground = {
+		"background-image" : "linear-gradient(135deg, rgb(83, 64, 203) 0%, rgb(137, 70, 163) 100%)",
+		color: "#FFF",
+		padding: "20px",
+		"border-radius": "24px",
+		"box-shadow": "5px 5px 5px 0px rgba(0,0,0,0.75)"
+	}
+
+	const createAccountButton = {
+		"border-radius": "24px",
+		"box-shadow": "5px 5px 5px 0px rgba(0,0,0,0.75)"
+	}
 	
 	return (
 		<SkeletonForAllPages>
-			<div className="container">
-				<div className="col-md-12">
-					<div className="row" className="p-4">
-						<Typography variant="body2" align="right">
-							<Link component={RouterLink} to="/login" underline="hover" className="p-2">
-								Sign in
-							</Link>
-							<Link component={RouterLink} to="/register" underline="hover" className="p-2">
-								Create account
-							</Link>
-						</Typography>
+			<div className="container-fluid">
+				<div className="row">
+					<div className="col-md-12">
+						<div className="row" className="p-4">
+							<Typography variant="body2" align="right">
+								<Link component={RouterLink} to="/login" underline="hover" className="p-2 m-2" style={ buttonPurpleBackground }>
+									Sign in
+								</Link>
+								<Link component={RouterLink} to="/register" underline="hover" className="p-2 m-2" style={createAccountButton}>
+									Create account
+								</Link>
+							</Typography>
+						</div>
 					</div>
 				</div>
-
 				<div className="row">
 					<div className="row">
-						{/* START OF CAROUSEL/HEADER */}
-						<div className="col-md-12 customCarousel">
-							{/* TEMPORARILY REMOVING AS I IMPLEMENT CAROUSEL
-							<h1 className="display-1 fw-bold text-center">HowRU.Life</h1>
-							<h6 className="text-center">Feel better with just a tap.</h6> 
-							*/}
-							
+					<Carousel className="customCarousel">
+						<Carousel.Item className="carousel-image">
+							<img src="https://images.unsplash.com/photo-1444312645910-ffa973656eba?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+						</Carousel.Item>
+						<Carousel.Item className="carousel-image">
+							<img src="https://images.unsplash.com/photo-1458441087617-24d758e383f1?q=80&w=3773&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+						</Carousel.Item>
+						<Carousel.Item className="carousel-image">
+							<img src="https://images.unsplash.com/photo-1682687982501-1e58ab814714?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+						</Carousel.Item>
+					</Carousel>
 
-							<div id="demo"></div>
-
-								<div class="details" id="details-even">
-									<div class="place-box">
-										<div class="text">Switzerland Alps</div>
-									</div>
-									<div class="title-box-1"><div class="title-1">SAINT</div></div>
-									<div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
-									<div class="desc">
-										Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. It's a hidden gem for backcountry skiing in winter and boasts lush trails for hiking and mountain biking during the warmer months.
-									</div>
-									<div class="cta">
-										<button class="bookmark">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											viewBox="0 0 24 24"
-											fill="currentColor"
-										>
-											<path
-											fill-rule="evenodd"
-											d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z"
-											clip-rule="evenodd"
-											/>
-										</svg>
-										</button>
-										<button class="discover">Discover Location</button>
-									</div>
-								</div>
-
-								<div class="details" id="details-odd">
-									<div class="place-box">
-										<div class="text">Switzerland Alps</div>
-									</div>
-									<div class="title-box-1"><div class="title-1">SAINT </div></div>
-									<div class="title-box-2"><div class="title-2">ANTONIEN</div></div>
-									<div class="desc">
-										Tucked away in the Switzerland Alps, Saint Antönien offers an idyllic retreat for those seeking tranquility and adventure alike. It's a hidden gem for backcountry skiing in winter and boasts lush trails for hiking and mountain biking during the warmer months.
-									</div>
-									<div class="cta">
-										<button class="bookmark">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											viewBox="0 0 24 24"
-											fill="currentColor"
-										>
-											<path
-											fill-rule="evenodd"
-											d="M6.32 2.577a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 01-1.085.67L12 18.089l-7.165 3.583A.75.75 0 013.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93z"
-											clip-rule="evenodd"
-											/>
-										</svg>
-										</button>
-										<button class="discover">Discover Location</button>
-									</div>
-								</div>
-
-							{/* <div class="pagination" id="pagination">
-								<div class="arrow arrow-left">
-									<svg
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-									>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M15.75 19.5L8.25 12l7.5-7.5"
-									/>
-									</svg>
-								</div>
-
-								<div class="progress-sub-container" >
-									<div class="progress-sub-background" >
-										<div class="progress-sub-foreground" ></div>
-									</div>
-								</div>
-								<div class="slide-numbers" id="slide-numbers"></div>
-							</div> */}
-						</div>
-						{/* END OF CAROUSEL/HEADER */}
 					</div>
 
 					<div className="row">

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import "../../Styling/bootstrap.css"
 import Bootstrap from 'react-bootstrap';
 import { Link as RouterLink } from "react-router-dom";
@@ -8,8 +7,6 @@ import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
 import "./DashboardPageStyling/DashboardPageStyling.scss";
 
 const DashboardPage = () => {
-	const navigate = useNavigate();
-	
 	return (
 		<SkeletonForAllPages>
 

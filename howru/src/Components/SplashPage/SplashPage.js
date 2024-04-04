@@ -4,7 +4,6 @@ import { Button, Typography, Link } from "@mui/material";
 import Bootstrap from 'react-bootstrap';
 import Navbar from "../GeneralComponents/Navbar";
 import Footer from "../GeneralComponents/Footer"
-//import Carousel from "../GeneralComponents/Carousel.js";
 import { useNavigate } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
@@ -19,20 +18,20 @@ const SplashPage = () => {
 
 
 	const navbarStyle = {
-		"background-color": "#ecf3fe",
+		backgroundColor: "#ecf3fe",
 	}
 
 	const buttonPurpleBackground = {
-		"background-image" : "linear-gradient(135deg, rgb(83, 64, 203) 0%, rgb(137, 70, 163) 100%)",
+		backgroundImage : "linear-gradient(135deg, rgb(83, 64, 203) 0%, rgb(137, 70, 163) 100%)",
 		color: "#FFF",
 		padding: "20px",
-		"border-radius": "24px",
-		"box-shadow": "5px 5px 5px 0px rgba(0,0,0,0.75)"
+		borderRadius: "24px",
+		boxShadow: "5px 5px 5px 0px rgba(0,0,0,0.75)"
 	}
 
 	const createAccountButton = {
-		"border-radius": "24px",
-		"box-shadow": "5px 5px 5px 0px rgba(0,0,0,0.75)"
+		borderRadius: "24px",
+		boxShadow: "5px 5px 5px 0px rgba(0,0,0,0.75)"
 	}
 	
 	return (
@@ -40,7 +39,7 @@ const SplashPage = () => {
 			<div className="container-fluid">
 				{/* <div className="row">
 					<div className="col-md-12">
-						<div className="row" className="p-4">
+						<div className="row p-4">
 							<Typography variant="body2" align="right">
 								<Link component={RouterLink} to="/login" underline="hover" className="p-2 m-2" style={ buttonPurpleBackground }>
 									Sign in
@@ -56,13 +55,13 @@ const SplashPage = () => {
 					<div className="row">
 					<Carousel className="customCarousel">
 						<Carousel.Item className="carousel-image">
-							<img src="https://images.unsplash.com/photo-1444312645910-ffa973656eba?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+							<img src="https://images.unsplash.com/photo-1444312645910-ffa973656eba?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="stones" />
 						</Carousel.Item>
 						<Carousel.Item className="carousel-image">
-							<img src="https://images.unsplash.com/photo-1458441087617-24d758e383f1?q=80&w=3773&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+							<img src="https://images.unsplash.com/photo-1458441087617-24d758e383f1?q=80&w=3773&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="meadow" />
 						</Carousel.Item>
 						<Carousel.Item className="carousel-image">
-							<img src="https://images.unsplash.com/photo-1682687982501-1e58ab814714?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+							<img src="https://images.unsplash.com/photo-1682687982501-1e58ab814714?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="mermaid" />
 						</Carousel.Item>
 					</Carousel>
 

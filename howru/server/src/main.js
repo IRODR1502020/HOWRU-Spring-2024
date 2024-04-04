@@ -5,7 +5,7 @@ import { auth,
 	signInWithEmailAndPassword, 
 	createUserWithEmailAndPassword,
 	sendPasswordResetEmail,	
-	db, collection, doc, setDoc, getDoc } from './firebase.js';
+	db, collection, doc, setDoc, getDoc, signOut } from './firebase.js';
 import generateToken from "./Utilities/LoginToken.js";
 
 const app = express();
@@ -93,6 +93,21 @@ app.post('/api/auth/reset', (req, res) => {
 	
 	sendPasswordResetEmail(auth, email);
   
+});
+
+app.post('/api/auth/logout', (req, res) => {
+	//const { email } = req.body;
+	
+	signOut(auth)
+	.then(() => {
+		// Sign-out successful.
+		res.status(200).json({message: "Logged out successfully."})
+	}).catch((error) => {
+		const errorMessage = error.message;
+		res.status(400).json({ errorMessage });
+	});
+	
+
 });
 
 ViteExpress.listen(app, process.env.SERVER_PORT, () =>

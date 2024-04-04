@@ -4,6 +4,7 @@ import { TextField, Box, Typography } from '@mui/material';
 import bg from "../../Assets/waves_bg.jpg";
 import '../../Styling/bootstrap.css';
 import SkeletonForAllPages from '../GeneralComponents/SkeletonForAllPages';
+import AuthServiceInstance from "../GeneralComponents/AuthService.js";
 
 
 const RegisterPage = () => {
@@ -18,19 +19,6 @@ const RegisterPage = () => {
 			navigate("/dashboard");
 		}
 	});
-	
-	async function registerUser(userData) {
-		return fetch('http://localhost:51234/api/auth/register', {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(userData)
-		})
-		.then(response => response.json()
-		).catch(error => console.error('There was some kind of issue!'))
-	}
 	
 	const handleRegister = async (e) => {
 		e.preventDefault();
@@ -47,7 +35,7 @@ const RegisterPage = () => {
 		
 		//console.log(userData);
 		
-		const userToken = await registerUser(userData);
+		const userToken = await AuthServiceInstance.registerUser(userData);
 		
 		// TODO: handle error if user account already exists
 		if(userToken.userEmail === undefined) {

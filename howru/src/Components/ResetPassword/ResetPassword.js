@@ -3,6 +3,7 @@ import { TextField, Box, Typography, Link } from '@mui/material';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import logo from "../../Assets/logo.png";
 import bg from "../../Assets/waves_bg.jpg";
+import AuthServiceInstance from "../GeneralComponents/AuthService.js";
 
 
 const ResetPassword = () => {
@@ -12,17 +13,6 @@ const ResetPassword = () => {
 	const navigate = useNavigate();
 	
 	// TODO: set timeout or something to prevent the function from hanging/crashing after a long time
-	async function resetUserPassword(userEmail) {
-		return fetch('http://localhost:51234/api/auth/reset', {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(userEmail)
-		})
-		.then(response => response.json())
-	}
 	
 	const handleReset = async (e) => {
 		e.preventDefault();
@@ -32,21 +22,12 @@ const ResetPassword = () => {
 			return;
 		}
 		
-		/*
-		try {
-			await sendPasswordResetEmail(auth, email);
-			setIsEmailSent(true);
-		} catch (error) {
-			console.error("Error sending reset email! Error code: ", error);
-		}
-		*/
-		
 		const userEmail = {}
 		userEmail['email'] = email;
 		
 		//console.log(userEmail);
 		
-		await resetUserPassword(userEmail)
+		await AuthServiceInstance.resetUserPassword(userEmail)
 		.then(setIsEmailSent(true));
 		
 	};

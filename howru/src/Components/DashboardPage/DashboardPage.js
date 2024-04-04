@@ -6,21 +6,10 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Box, Typography } from '@mui/material';
 import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
 import "./DashboardPageStyling/DashboardPageStyling.scss";
+import AuthServiceInstance from "../GeneralComponents/AuthService.js";
 
 const DashboardPage = () => {
 	const navigate = useNavigate();
-	
-	async function logoutUser(userEmail) {
-		return fetch('http://localhost:51234/api/auth/logout', {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(userEmail)
-		}).then(response => response.json()
-		).catch(error => console.error('There was some kind of issue!'))
-	}
 	
 	const logoutButtonStyle = {
 		display: "flex", 
@@ -34,8 +23,8 @@ const DashboardPage = () => {
 			'email': sessionStorage.getItem("user_email")
 		}
 		
-		const response = logoutUser(userEmail);
-		console.log(response)
+		AuthServiceInstance.logoutUser(userEmail);
+		//console.log(response)
 		
 		sessionStorage.clear();
 		navigate("/login");

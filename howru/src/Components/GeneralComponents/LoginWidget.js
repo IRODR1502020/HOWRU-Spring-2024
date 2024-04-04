@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { TextField, Box, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Carousel, CarouselCaption, CarouselItem } from 'react-bootstrap';
+import AuthServiceInstance from "./AuthService.js";
 
 
 const LoginWidget = () => {
@@ -16,19 +17,6 @@ const LoginWidget = () => {
 			navigate("/dashboard");
 		}
 	});
-	
-	async function loginUser(userEmailAndPass) {
-		return fetch('http://localhost:51234/api/auth/login', {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(userEmailAndPass)
-		}).then(response => response.json()
-		).catch(error => console.error('There was some kind of issue!'))
-	}
-		
 
     const handleLogin = async (e) => {
 		e.preventDefault();
@@ -44,9 +32,9 @@ const LoginWidget = () => {
 		
 		//console.log(userEmailAndPass);
 		
-		const userToken = await loginUser(userEmailAndPass);
+		const userToken = await AuthServiceInstance.loginUser(userEmailAndPass);
 		
-		//console.log(userToken);
+		//console.log(userToken.userEmail);
 		
 		if(userToken.userEmail === undefined) {
 			setBadCredentialsMessage('Incorrect email or password!');

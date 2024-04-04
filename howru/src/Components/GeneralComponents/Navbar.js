@@ -19,6 +19,11 @@ export default function Navbar() {
 			<li className="nav-item">
 				<img src={logo} alt="logo" style={logoStyle} />
 			</li>
+			<li className="nav-item">
+				{
+					
+				}
+			</li>
 			<li className="nav-item" onClick={() => navigate('/')}>
 				<a href="#">
 					<House height="32" width="32"/>

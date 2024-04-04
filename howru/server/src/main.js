@@ -72,6 +72,8 @@ app.post('/api/auth/login', (req, res) => {
 			const userEmail = userCredential.user.email;
 			const token = generateToken(128);
 			return res.status(200).json( { userName, userEmail, token} );
+		  }).catch((error) => {
+			console.log(error)
 		  })
 	  })
 	  .catch((error) => {

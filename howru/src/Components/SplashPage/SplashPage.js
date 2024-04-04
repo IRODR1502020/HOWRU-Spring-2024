@@ -11,6 +11,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
 import "./SplashPageStyling/SplashPageStyling.scss";
 import Carousel from 'react-bootstrap/Carousel';
+import MembershipSection from "./MembershipSection";
 
 
 const SplashPage = () => {
@@ -71,10 +72,9 @@ const SplashPage = () => {
 						<div className="col-md-6 bg-light p-5">
 							<h3 className="display-4">What is HowRU.Life?</h3>
 							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula nibh id arcu feugiat, id gravida eros finibus. Suspendisse potenti. Nunc vel commodo nulla, ac dignissim nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer non purus eget sapien rhoncus suscipit. Fusce aliquet risus quis nulla lobortis, vitae tincidunt mi convallis. Integer vehicula purus quis felis consectetur, in condimentum nisi tincidunt. Integer rhoncus lectus a risus feugiat, vel ullamcorper felis viverra. Vivamus at dui vitae sem malesuada faucibus a eget ligula. Donec sed est vitae magna commodo aliquam ut sit amet leo. Duis vel ex eu justo consequat tempor. Nulla ornare mi nec mi fermentum bibendum.
-							</p>
-							<p>
-								Maecenas non elit at turpis suscipit feugiat. Integer id erat vitae ligula ultricies aliquam. Curabitur vulputate, ligula sit amet luctus tincidunt, lorem tortor malesuada lorem, in malesuada dui mi nec felis. Phasellus in enim quis est lobortis tincidunt eu et ante. Vivamus sit amet ligula sed mi efficitur suscipit. Vivamus vel quam eget velit tempor congue. Sed bibendum dui odio, vel vestibulum lacus laoreet id. Mauris non luctus ante. Vivamus vel nisl a justo vestibulum varius eget et purus. Vivamus id massa ac sapien placerat auctor eget nec justo. Integer hendrerit lacinia diam, et iaculis sapien venenatis sit amet. Vivamus viverra vehicula libero vel efficitur. Nam nec tristique justo.
+							HOWRU.Life is an innovative application designed to assist in the management of stress and anxiety. 
+							The application offers a variety of features, including a daily mood diary, where you can document your emotional state through responses to carefully curated questions. Furthermore, HOWRU.Life also provides immediate access to guided breathing exercises, offering an effective solution for instant anxiety relief. 
+							The multifaceted tool serves as your personalized ally in mental health maintenance and immediate stress reduction.
 							</p>
 
 						</div>
@@ -90,6 +90,8 @@ const SplashPage = () => {
 							</ul>
 						</div>
 					</div>
+
+					<MembershipSection />
 				</div>
 			</div>
 		</SkeletonForAllPages>

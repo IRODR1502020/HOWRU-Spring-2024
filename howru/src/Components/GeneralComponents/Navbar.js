@@ -13,9 +13,14 @@ export default function Navbar() {
 		marginLeft: "0.75rem",
 		width: "auto",
 	}
-	
+
+	const navbarStyle = {
+	}
+
     return (
-        <div className="nav d-flex flex-column bg-secondary-subtle m-2 rounded p-4">
+        <div className="nav d-flex flex-column bg-secondary-subtle m-2 rounded p-4"
+			style={navbarStyle}
+		>
 			<li className="nav-item">
 				<img src={logo} alt="logo" style={logoStyle} />
 			</li>
@@ -45,5 +50,6 @@ export default function Navbar() {
 				</a>
 			</li>
         </div>
+
     );
 }

@@ -38,7 +38,7 @@ const SplashPage = () => {
 	return (
 		<SkeletonForAllPages>
 			<div className="container-fluid">
-				<div className="row">
+				{/* <div className="row">
 					<div className="col-md-12">
 						<div className="row" className="p-4">
 							<Typography variant="body2" align="right">
@@ -51,7 +51,7 @@ const SplashPage = () => {
 							</Typography>
 						</div>
 					</div>
-				</div>
+				</div> */}
 				<div className="row">
 					<div className="row">
 					<Carousel className="customCarousel">

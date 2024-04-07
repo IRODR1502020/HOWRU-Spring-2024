@@ -24,6 +24,10 @@ const AccountNavbar = () => {
             <div className="col-md-12">
                 <div className="row" className="p-4">
                     <Typography variant="body2" align="right">
+                        {
+                            sessionStorage.getItem('name') == null ?
+                                null : (<h4 className="d-inline-block pr-2 m-0">Hello, {sessionStorage.getItem('name')}</h4>)
+                        }
                         <Link component={RouterLink} to="/login" underline="hover" className="p-2 m-2" style={ buttonPurpleBackground }>
                             Sign in
                         </Link>

@@ -7,6 +7,7 @@ import { Box, Typography } from '@mui/material';
 import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
 import "./DashboardPageStyling/DashboardPageStyling.scss";
 import AuthServiceInstance from "../GeneralComponents/AuthService.js";
+import FeelingsCheckIn from './FeelingsCheckIn.js';
 
 const DashboardPage = () => {
 	const navigate = useNavigate();
@@ -33,7 +34,7 @@ const DashboardPage = () => {
 	
 	return (
 		<SkeletonForAllPages>
-
+			<FeelingsCheckIn></FeelingsCheckIn>
 			<section className="musicSection">
 			<Box>
 				<button type="button" onClick={handleLogout} > Logout </button>

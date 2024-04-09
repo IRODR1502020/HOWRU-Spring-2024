@@ -5,8 +5,8 @@ import { auth,
 	signInWithEmailAndPassword, 
 	createUserWithEmailAndPassword,
 	sendPasswordResetEmail,	
-	db, collection, doc, setDoc, getDoc, signOut } from './firebase.js';
-import generateToken from "./Utilities/LoginToken.js";
+	db, collection, doc, setDoc, getDoc, signOut, updateDoc } from './firebase.js';
+import { Firestore } from "firebase/firestore";
 
 const app = express();
 app.use(cors());
@@ -34,7 +34,7 @@ app.post("/api/auth/register", async (req, res) => {
 		// Signed up 
 		
 		const userEmail = userCredential.user.email;
-		const token = generateToken(128);
+		const token = userCredential.user.uid;
 		const userDocRef = doc(db, "Users", userCredential.user.uid );
 		setDoc(userDocRef, {"email": email, "name": name})
 		  .then(() => {
@@ -50,6 +50,8 @@ app.post("/api/auth/register", async (req, res) => {
 	  });
 	
 });
+
+
 
 /* This is the API endpoint for logging in with an existing account */
 app.post('/api/auth/login', (req, res) => {
@@ -70,7 +72,7 @@ app.post('/api/auth/login', (req, res) => {
 		  .then((name) => {
 			const userName = name;
 			const userEmail = userCredential.user.email;
-			const token = generateToken(128);
+			const token = userCredential.user.uid;
 			return res.status(200).json( { userName, userEmail, token} );
 		  }).catch((error) => {
 			console.log(error)
@@ -110,6 +112,28 @@ app.post('/api/auth/logout', (req, res) => {
 
 });
 
+// ###################################################################################
+
+// app.post('/api/post/feelingCheckIn', async (req, res) => {
+//     try {
+//         const { feelingRating, controlRating } = req.body;
+//         const userDocRef = doc(db, 'Users', req.body.userId); // Assuming userId is sent in the request body
+//         const userDocSnap = await getDoc(userDocRef);
+
+//         if (userDocSnap.exists()) {
+//             console.log(userDocSnap.data());
+//             res.status(200).send('User data retrieved successfully');
+//         } else {
+//             console.log('Doc does not exist!');
+//             res.status(404).send('User not found');
+//         }
+//     } catch (error) {
+//         console.error('Error processing request:', error);
+//         res.status(500).send('Internal server error');
+//     }
+// });
+
+// ###################################################################################
 ViteExpress.listen(app, process.env.SERVER_PORT, () =>
   console.log("Server is listening on port:", process.env.SERVER_PORT),
 );

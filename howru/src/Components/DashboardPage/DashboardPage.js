@@ -8,6 +8,7 @@ import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
 import "./DashboardPageStyling/DashboardPageStyling.scss";
 import AuthServiceInstance from "../GeneralComponents/AuthService.js";
 import FeelingsCheckIn from './FeelingsCheckIn.js';
+import RestYourMindPage from '../RestYourMindPage/RestYourMindPage.js'
 
 const DashboardPage = () => {
 	const navigate = useNavigate();
@@ -35,11 +36,17 @@ const DashboardPage = () => {
 	return (
 		<SkeletonForAllPages>
 			<FeelingsCheckIn></FeelingsCheckIn>
-			<section className="musicSection">
+			
+			<Box>
+				<button type="button" onClick={() => navigate('/restyourmind')}> Rest My Mind </button>
+			</Box>
+			
 			<Box>
 				<button type="button" onClick={handleLogout} > Logout </button>
 				
 			</Box>
+			
+			<section className="musicSection">
 				<div className="card-grid">
 					<div className="card" style={{backgroundColor: '#d4a373'}}>
 						<h3 className="card_heading">

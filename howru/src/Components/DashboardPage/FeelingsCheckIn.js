@@ -1,4 +1,4 @@
-import Recat, {useState} from 'react';
+import React, {useState} from 'react';
 import AuthServiceInstance from '../GeneralComponents/AuthService';
 
 const FeelingsCheckIn = () => {
@@ -28,8 +28,8 @@ const FeelingsCheckIn = () => {
     return (
         <form onSubmit={uploadFeelingCheckIn}>
             <legend>Feeling Check In</legend>
-            <div class="range-container">
-                <label for="rangeInput">How are you feeling today?</label>
+            <div className="range-container">
+                <label htmlFor="rangeInput">How are you feeling today?</label>
                 <input type="range" 
                         id="rangeInput" 
                         min="1" 
@@ -39,8 +39,8 @@ const FeelingsCheckIn = () => {
                 <span id="textInput">{feeling}</span>
             </div>
 
-            <div class="range-container">
-                <label for="rangeInput">How in control are you today?</label>
+            <div className="range-container">
+                <label htmlFor="rangeInput">How in control are you today?</label>
                 <input type="range" 
                         id="rangeInput" 
                         min="1" 

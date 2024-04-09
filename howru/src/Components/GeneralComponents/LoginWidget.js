@@ -64,7 +64,7 @@ const LoginWidget = () => {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email"
+                        placeholder="email@example.com"
                         margin="normal"
                         size="small"
                     />

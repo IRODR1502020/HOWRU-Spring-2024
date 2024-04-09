@@ -7,6 +7,7 @@ import ResetPasswordPage from './Components/ResetPassword/ResetPassword.js';
 import ProtectedRoute from './Components/GeneralComponents/ProtectedRoute.js';
 import DashboardPage from './Components/DashboardPage/DashboardPage.js';
 import ProfilePage from './Components/ProfilePage/ProfilePage.js';
+import RestYourMindPage from './Components/RestYourMindPage/RestYourMindPage.js'
 
 
 const App = () => {
@@ -20,7 +21,8 @@ const App = () => {
 				<Route path="/forgot-password" element={<ResetPasswordPage />} />
 				<Route element={<ProtectedRoute />} > 
 					<Route path="/dashboard" element={<DashboardPage />} />
-					<Route path="/dashboard/my-profile" element={<ProfilePage />} />
+					<Route path="/my-profile" element={<ProfilePage />} />
+					<Route path="/restyourmind" element={<RestYourMindPage />} /> 
 				</Route> 
 				
 			</Routes>

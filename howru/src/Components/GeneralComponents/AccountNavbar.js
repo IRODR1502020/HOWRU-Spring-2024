@@ -25,15 +25,25 @@ const AccountNavbar = () => {
                 <div className="row" className="p-4">
                     <Typography variant="body2" align="right">
                         {
-                            sessionStorage.getItem('name') == null ?
+                            sessionStorage.getItem('name') === null ?
                                 null : (<h4 className="d-inline-block pr-2 m-0">Hello, {sessionStorage.getItem('name')}</h4>)
                         }
-                        <Link component={RouterLink} to="/login" underline="hover" className="p-2 m-2" style={ buttonPurpleBackground }>
+						{
+                            sessionStorage.getItem('name') !== null ?
+                        (<Link component={RouterLink} to="/dashboard" underline="hover" className="p-2 m-2" style={ buttonPurpleBackground }>
+                            Dashboard
+                        </Link>) : 
+						(<Link component={RouterLink} to="/login" underline="hover" className="p-2 m-2" style={ buttonPurpleBackground }>
                             Sign in
-                        </Link>
-                        <Link component={RouterLink} to="/register" underline="hover" className="p-2 m-2" style={createAccountButton}>
+                        </Link>)
+                        }
+						
+						{
+                            sessionStorage.getItem('name') !== null ?
+                        null : (<Link component={RouterLink} to="/register" underline="hover" className="p-2 m-2" style={createAccountButton}>
                             Create account
-                        </Link>
+                        </Link>)
+                        }
                     </Typography>
                 </div>
             </div>

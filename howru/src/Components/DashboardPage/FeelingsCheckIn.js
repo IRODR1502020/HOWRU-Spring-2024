@@ -17,13 +17,12 @@ const FeelingsCheckIn = () => {
     const uploadFeelingCheckIn = (e) => {
         e.preventDefault();
         const feelingCheckInToken = {}
+        feelingCheckInToken['uid'] = sessionStorage.getItem('login_token');
         feelingCheckInToken['feeling_rating'] = feeling;
         feelingCheckInToken['control_rating'] = control;
 
         console.log(feelingCheckInToken)
-        // const feelingCheckIn = AuthServiceInstance.addFeelingCheckIn(feelingCheckInToken);
-        console.log("testing")
-        
+        const feelingCheckIn = AuthServiceInstance.addFeelingCheckIn(feelingCheckInToken);
     }
 // ###################################################################################
     return (

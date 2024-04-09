@@ -114,24 +114,31 @@ app.post('/api/auth/logout', (req, res) => {
 
 // ###################################################################################
 
-// app.post('/api/post/feelingCheckIn', async (req, res) => {
-//     try {
-//         const { feelingRating, controlRating } = req.body;
-//         const userDocRef = doc(db, 'Users', req.body.userId); // Assuming userId is sent in the request body
-//         const userDocSnap = await getDoc(userDocRef);
+app.post('/api/post/feelingCheckIn', async (req, res) => {
 
-//         if (userDocSnap.exists()) {
-//             console.log(userDocSnap.data());
-//             res.status(200).send('User data retrieved successfully');
-//         } else {
-//             console.log('Doc does not exist!');
-//             res.status(404).send('User not found');
-//         }
-//     } catch (error) {
-//         console.error('Error processing request:', error);
-//         res.status(500).send('Internal server error');
-//     }
-// });
+	// This is only a test to see if inputting values work. not actually taking in the avg
+
+    try {
+        const { uid, feeling_rating, control_rating } = req.body;
+        const userDocRef = doc(db, 'Users', uid); // Assuming userId is sent in the request body
+
+		updateDoc(userDocRef, {
+			"avgFeelingRating": feeling_rating,
+			"avgControlRating": control_rating
+		})
+		.then(() => {
+			console.log(req.body)
+			console.log("Updated avgFeelingRating and avgControlRating values")
+		})
+		.catch(() => {
+			console.log("Could not update")
+		})
+		
+    } catch (error) {
+        console.error('Error processing request:', error);
+        res.status(500).send('Internal server error');
+    }
+});
 
 // ###################################################################################
 ViteExpress.listen(app, process.env.SERVER_PORT, () =>

@@ -3,6 +3,8 @@ import Bootstrap from 'react-bootstrap';
 import Navbar from "../GeneralComponents/Navbar";
 import Footer from "../GeneralComponents/Footer"
 import AccountNavbar from "./AccountNavbar";
+
+
 const SkeletonForAllPages = ({children}) => {
     return (
         <div className="container-fluid">

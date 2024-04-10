@@ -6,7 +6,25 @@ const RestYourMindPage = () => {
 	
 	return (
 	<SkeletonForAllPages>
-		<div> Hello there! </div>
+		<div className="exercisecontainer"> 
+			<h1> 
+				Meditation Techniques
+			</h1>
+			<h3>
+				I want to...
+			</h3>
+			<button type="button" className="exercisecontainer exbutton"> 
+				Destress my day! 
+			</button>
+			<button type="button" className="exercisecontainer exbutton"> 
+				Ease my sleep! 
+			</button>
+			<button type="button" className="exercisecontainer exbutton"> 
+				Strengthen my focus!
+			</button>
+			
+		
+		</div>
 	</SkeletonForAllPages>
 	);
 	

@@ -61,7 +61,7 @@ app.post('/api/auth/login', (req, res) => {
 	signInWithEmailAndPassword(auth, email, password)
 	  .then((userCredential) => {
 		// Signed in
-		console.log(userCredential)
+		//console.log(userCredential)
 		
 		const userDocRef = doc(db, "Users", userCredential.user.uid );
 		getDoc(userDocRef)
@@ -97,6 +97,7 @@ app.post('/api/auth/reset', (req, res) => {
   
 });
 
+/* This is the API endpoint for signing out the current user */
 app.post('/api/auth/logout', (req, res) => {
 	//const { email } = req.body;
 	

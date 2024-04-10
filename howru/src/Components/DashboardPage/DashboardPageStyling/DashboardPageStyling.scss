@@ -28,37 +28,42 @@ img {
   --width-container: 1200px;
 }
 
-.musicSection {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  background-image: linear-gradient(15deg, #0f4667 0%, #2a6973 150%);
-  padding: var(--spacing-xxl) var(--spacing-l);
-}
+.menu {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    height: 90%;
+    float: right;
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    margin-left: 50px;
+    min-inline-size: 50%;
+    flex-wrap: wrap;
 
-.card-grid {
-  display: flex;
-  flex-wrap: nowrap; /* Prevent wrapping */
-  overflow-x: auto; /* Enable horizontal scrolling */
-  margin-top: 20px; /* Add some margin for better visualization */
-  .card {
-    height: 400px;
+  }
+
+.menu-button {
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    border: none;
+    border-radius: 15px;
+    align-items: stretch;
+    max-width: 100%;
+    min-width: 40%;
+    max-height: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+    margin:20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 300px; /* Set the width of each card */
-    background-color: white;
-    margin-right: 20px; /* Add some margin between cards */
-    /* box-sizing: border-box; */
-    padding: 30px;
-    border-radius: 25px;
-    box-shadow: 10px 0px 5px 0px rgba(0,0,0,0.5);
-    
-    .card_heading{
-      color: var(--text-lighter);
-      font-size: 1.9rem;
-      text-shadow: 2px 2px 20px rgba(0,0,0,0.2);
-      line-height: 1.4;
-      word-spacing: 100vw;
-    }
+    text-wrap: wrap;
   }
-}
+
+.menu-button:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  }

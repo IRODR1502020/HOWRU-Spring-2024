@@ -8,7 +8,8 @@ import ProtectedRoute from './Components/GeneralComponents/ProtectedRoute.js';
 import DashboardPage from './Components/DashboardPage/DashboardPage.js';
 import ProfilePage from './Components/ProfilePage/ProfilePage.js';
 import RestYourMindPage from './Components/RestYourMindPage/RestYourMindPage.js'
-import FeelingsCheckIn from "./Components/FeelingsCheckIn/FeelingsCheckIn.js";
+import FeelingsCheckInPage from "./Components/FeelingsCheckIn/FeelingsCheckIn.js";
+import AmbientMusicPlayerPage from "./Components/AmbientPlayerPage/AmbientPlayerPage.js";
 
 const App = () => {
 
@@ -23,7 +24,8 @@ const App = () => {
 					<Route path="/dashboard" element={<DashboardPage />} />
 					<Route path="/my-profile" element={<ProfilePage />} />
 					<Route path="/restyourmind" element={<RestYourMindPage />} /> 
-					<Route path="/feelingsCheckIn" element={<FeelingsCheckIn />}/>
+					<Route path="/check-in" element={<FeelingsCheckInPage />}/>
+					<Route path="/ambientmusic" element={<AmbientMusicPlayerPage />}/>
 				</Route> 
 				
 			</Routes>

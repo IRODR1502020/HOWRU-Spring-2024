@@ -39,7 +39,7 @@ const AccountNavbar = () => {
     return (
         <div className="row">
             <div className="col-md-12">
-                <div className="row" className="p-4">
+                <div className="row p-4">
                     <Typography variant="body2" align="right">
                         {
                             sessionStorage.getItem('name') === null ?

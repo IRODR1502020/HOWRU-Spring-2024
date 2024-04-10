@@ -7,44 +7,22 @@ import { Box, Typography } from '@mui/material';
 import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
 import "./DashboardPageStyling/DashboardPageStyling.scss";
 import AuthServiceInstance from "../GeneralComponents/AuthService.js";
-import FeelingsCheckIn from './FeelingsCheckIn.js';
 import RestYourMindPage from '../RestYourMindPage/RestYourMindPage.js'
 
 const DashboardPage = () => {
 	const navigate = useNavigate();
 	
-	const logoutButtonStyle = {
-		display: "flex", 
-		flexDirection: "row-reverse", 
-		justifyContent: "flex-start",
-		alignItems: "flex-start",
-	}
+
 	
-	const handleLogout = () => {
-		const userEmail = {
-			'email': sessionStorage.getItem("user_email")
-		}
-		
-		AuthServiceInstance.logoutUser(userEmail);
-		//console.log(response)
-		
-		sessionStorage.clear();
-		navigate("/login");
-		
-	}
+
 	
 	return (
 		<SkeletonForAllPages>
-			<FeelingsCheckIn></FeelingsCheckIn>
 			
 			<Box>
 				<button type="button" onClick={() => navigate('/restyourmind')}> Rest My Mind </button>
 			</Box>
 			
-			<Box>
-				<button type="button" onClick={handleLogout} > Logout </button>
-				
-			</Box>
 			
 			<section className="musicSection">
 				<div className="card-grid">

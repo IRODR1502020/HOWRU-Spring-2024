@@ -8,7 +8,7 @@ import ProtectedRoute from './Components/GeneralComponents/ProtectedRoute.js';
 import DashboardPage from './Components/DashboardPage/DashboardPage.js';
 import ProfilePage from './Components/ProfilePage/ProfilePage.js';
 import RestYourMindPage from './Components/RestYourMindPage/RestYourMindPage.js'
-
+import FeelingsCheckIn from "./Components/FeelingsCheckIn/FeelingsCheckIn.js";
 
 const App = () => {
 
@@ -23,6 +23,7 @@ const App = () => {
 					<Route path="/dashboard" element={<DashboardPage />} />
 					<Route path="/my-profile" element={<ProfilePage />} />
 					<Route path="/restyourmind" element={<RestYourMindPage />} /> 
+					<Route path="/feelingsCheckIn" element={<FeelingsCheckIn />}/>
 				</Route> 
 				
 			</Routes>

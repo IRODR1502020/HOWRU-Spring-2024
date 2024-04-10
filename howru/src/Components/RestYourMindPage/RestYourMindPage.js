@@ -1,6 +1,6 @@
 import React from 'react';
 import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
-import "./RestYourMindPage.scss";
+import "./RestYourMindPageStyling/RestYourMindPage.scss";
 
 const RestYourMindPage = () => {
 	

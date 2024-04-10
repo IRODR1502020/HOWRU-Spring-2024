@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import AuthServiceInstance from '../GeneralComponents/AuthService';
 import SkeletonForAllPages from '../GeneralComponents/SkeletonForAllPages';
-
+import "./FeelingsCheckInStyling/FeelingsCheckInStyling.scss";
 const FeelingsCheckIn = () => {
 
     const [feeling, setFeeling] = useState(1);
@@ -53,27 +53,36 @@ const FeelingsCheckIn = () => {
                     <span id="textInput">{control}</span>
                 </div>
 
-                <fieldset>
-                    <legend>Stressor of the Day</legend>
+                <fieldset className="main-container">
+                    <div className="radio-buttons">
+                        <legend>Stressor of the Day</legend>
 
-                    <div>
-                        <input type="radio" id="home" name="stressor" value="home" checked />
-                        <label for="home">Home</label>
-                    </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="home" name="stressor" value="home" checked />
+                            <span className="radio-btn"><i className="las la-check"></i>
+                                <div className="hobbies-icon">
+                                {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Home</h3>
+                                </div>
+                                
+                            </span>
+                        </label>
 
-                    <div>
-                        <input type="radio" id="work" name="stressor" value="work" />
-                        <label for="work">Work</label>
-                    </div>
 
-                    <div>
-                        <input type="radio" id="school" name="stressor" value="school" />
-                        <label for="school">School</label>
-                    </div>
+                        <div>
+                            <input type="radio" id="work" name="stressor" value="work" />
+                            <label for="work">Work</label>
+                        </div>
 
-                    <div>
-                        <input type="radio" id="socialSetting" name="stressor" value="socialSetting" />
-                        <label for="socialSetting">Social Setting</label>
+                        <div>
+                            <input type="radio" id="school" name="stressor" value="school" />
+                            <label for="school">School</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="socialSetting" name="stressor" value="socialSetting" />
+                            <label for="socialSetting">Social Setting</label>
+                        </div>
                     </div>
                 </fieldset>
 

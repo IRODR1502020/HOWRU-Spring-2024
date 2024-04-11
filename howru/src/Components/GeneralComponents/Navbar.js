@@ -10,17 +10,16 @@ export default function Navbar() {
 	
 	const logoStyle = {
 		height: "100px",
-		marginBottom: "2.5rem",
-		marginTop: "2rem",
-		marginLeft: "0.75rem",
 		width: "auto",
 	}
 
 	const navbarStyle = {
+		height: "100vh"
 	}
 
+
     return (
-        <div className="nav d-flex flex-column bg-secondary-subtle m-2 rounded p-4"
+        <div className="nav d-flex flex-column bg-secondary-subtle h-100"
 			style={navbarStyle}
 		>
 			<li className="nav-item">

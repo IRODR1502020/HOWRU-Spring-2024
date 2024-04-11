@@ -10,7 +10,7 @@ const SkeletonForAllPages = ({children}) => {
         <div className="container-fluid">
             <AccountNavbar />
             <div className="row">
-                <div className="col-md-2 fixed-top p-0">
+                <div className="col-md-2 fixed-top p-0 h-100">
                     <Navbar />
                 </div>
             </div>

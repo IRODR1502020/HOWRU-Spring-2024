@@ -1,10 +1,10 @@
 import React from "react";
+import AuthServiceInstance from "./AuthService";
 import "../../Styling/bootstrap.css"
 import { Button, Typography, Link } from "@mui/material";
 import Bootstrap from 'react-bootstrap';
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
-import AuthServiceInstance from "./AuthService";
 import { create } from "@mui/material/styles/createTransitions";
 
 const AccountNavbar = () => {

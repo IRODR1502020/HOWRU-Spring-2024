@@ -1,16 +1,14 @@
 import React from "react";
-import "../../Styling/bootstrap.css"
-import { Button, Typography, Link } from "@mui/material";
-import Bootstrap from 'react-bootstrap';
-import Navbar from "../GeneralComponents/Navbar";
-import Footer from "../GeneralComponents/Footer"
-import { useNavigate } from "react-router-dom";
-import { Link as RouterLink } from "react-router-dom";
-import { Container, Row, Col } from 'react-bootstrap';
 import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
-import "./SplashPageStyling/SplashPageStyling.scss";
 import Carousel from 'react-bootstrap/Carousel';
 import MembershipSection from "./MembershipSection";
+import Navbar from "../GeneralComponents/Navbar";
+import Footer from "../GeneralComponents/Footer"
+import Bootstrap, { Container, Row, Col } from 'react-bootstrap';
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Button, Typography, Link } from "@mui/material";
+import "./SplashPageStyling/SplashPageStyling.scss";
+import "../../Styling/bootstrap.css"
 
 
 const SplashPage = () => {

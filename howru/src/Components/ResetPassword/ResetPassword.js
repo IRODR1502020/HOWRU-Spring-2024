@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import AuthServiceInstance from "../GeneralComponents/AuthService.js";
 import { TextField, Box, Typography, Link } from '@mui/material';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import logo from "../../Assets/logo.png";
 import bg from "../../Assets/waves_bg.jpg";
-import AuthServiceInstance from "../GeneralComponents/AuthService.js";
 
 
 const ResetPassword = () => {

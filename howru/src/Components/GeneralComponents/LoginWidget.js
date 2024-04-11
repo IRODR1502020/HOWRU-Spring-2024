@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import AuthServiceInstance from "./AuthService.js";
 import { TextField, Box, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Carousel, CarouselCaption, CarouselItem } from 'react-bootstrap';
-import AuthServiceInstance from "./AuthService.js";
 
 
 const LoginWidget = () => {

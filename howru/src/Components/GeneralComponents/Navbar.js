@@ -3,6 +3,8 @@ import { House, Gear, InfoCircle, QuestionCircle} from 'react-bootstrap-icons';
 import logo from "../../Assets/logo.png"
 // import "../../Styling/bootstrap.css"
 import { useNavigate } from 'react-router-dom';
+
+
 export default function Navbar() {
 	const navigate = useNavigate();
 	

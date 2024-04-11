@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import SkeletonForAllPages from '../GeneralComponents/SkeletonForAllPages';
+import AuthServiceInstance from "../GeneralComponents/AuthService.js";
 import { useNavigate } from 'react-router-dom';
 import { TextField, Box, Typography } from '@mui/material';
 import bg from "../../Assets/waves_bg.jpg";
 import '../../Styling/bootstrap.css';
-import SkeletonForAllPages from '../GeneralComponents/SkeletonForAllPages';
-import AuthServiceInstance from "../GeneralComponents/AuthService.js";
 
 
 const RegisterPage = () => {

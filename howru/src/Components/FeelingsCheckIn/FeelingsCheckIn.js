@@ -6,14 +6,42 @@ const FeelingsCheckIn = () => {
 
     const [feeling, setFeeling] = useState(1);
     const [control, setControl] = useState(1);
-    const [page, setCurrentPage] = useState('feelingsPage');
+    const [page, setCurrentPage] = useState('feelingTodayPage');
+
+    const styles = {
+        feelingTodayPage: {
+            display: page === "feelingTodayPage" ? "block" : "none"
+        },
+        controlTodayPage: {
+            display: page === "controlTodayPage" ? "block" : "none"
+        },
+        stressorOfTheDayPage: {
+            display: page === "stressorOfTheDayPage" ? "block" : "none"
+        },
+        homeStressorsPage: {
+            display: page === "homeStressorsPage" ? "block" : "none"
+        },
+        workStressorsPage: {
+            display: page === "workStressorsPage" ? "block" : "none"
+        },
+        schoolStressorsPage: {
+            display: page === "schoolStressorsPage" ? "block" : "none"
+          },
+        socialStressorsPage: {
+            display: page === "socialStressorsPage" ? "block" : "none"
+        }
+      };
+      
 
     const updateFeeling = (e) => {
+        console.log(e.target.value)
         setFeeling(parseInt(e.target.value));
+        console.log(page)
     }
 
     const updateControl = (e) => {
         setControl(parseInt(e.target.value));
+        console.log(page)
     }
 // ###################################################################################
     const uploadFeelingCheckIn = (e) => {
@@ -28,41 +56,42 @@ const FeelingsCheckIn = () => {
     }
 // ###################################################################################
 
-    const [formSection, setFormSection] = useState('feeling');
     // used to navigate which section of the should be displayed.
     // [feeling, control, stressorOfTheDay, home, work, school, social]
     return (
         <SkeletonForAllPages>
             <form onSubmit={uploadFeelingCheckIn}>
                 <legend>Feeling Check In</legend>
-                <div className="range-container">
+                <div className="range-container" style={ styles.feelingTodayPage }>
                     <label htmlFor="rangeInput">How are you feeling today?</label>
                     <input type="range" 
                             id="rangeInput" 
                             min="1" 
                             max="5" 
                             value = {feeling}
-                            onChange={updateFeeling} />
+                            onChange={updateFeeling} 
+                            onMouseUp={() => setCurrentPage("controlTodayPage")}/>
                     <span id="textInput">{feeling}</span>
                 </div>
-
-                <div className="range-container">
+                
+                <div className="range-container" style={ styles.controlTodayPage }>
                     <label htmlFor="rangeInput">How in control are you today?</label>
                     <input type="range" 
                             id="rangeInput" 
                             min="1" 
                             max="5" 
                             value = {control}
-                            onChange={updateControl} />
+                            onChange={updateControl} 
+                            onMouseUp={() => setCurrentPage("stressorOfTheDayPage")}/>
                     <span id="textInput">{control}</span>
                 </div>
-
-                <fieldset className="main-container">
+                
+                <fieldset className="main-container" style={ styles.stressorOfTheDayPage }>
                     <div className="radio-buttons">
                         <legend>Stressor of the Day</legend>
 
                         <label className="custom-radio">
-                            <input type="radio" id="home" name="stressor" value="home" checked />
+                            <input type="radio" id="home" name="stressor" value="home" onClick={() => setCurrentPage("homeStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-check"></i>
                                 <div className="hobbies-icon">
                                 {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -72,9 +101,8 @@ const FeelingsCheckIn = () => {
                             </span>
                         </label>
 
-
                         <label className="custom-radio">
-                            <input type="radio" id="work" name="stressor" value="work" checked />
+                            <input type="radio" id="work" name="stressor" value="work" onClick={() => setCurrentPage("homeStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-check"></i>
                                 <div className="hobbies-icon">
                                 {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -85,7 +113,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="school" name="stressor" value="school" checked />
+                            <input type="radio" id="school" name="stressor" value="school" onClick={() => setCurrentPage("homeStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-check"></i>
                                 <div className="hobbies-icon">
                                 {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -96,7 +124,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="socialsetting" name="stressor" value="socialsetting" checked />
+                            <input type="radio" id="socialsetting" name="stressor" value="socialsetting" onClick={() => setCurrentPage("homeStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-check"></i>
                                 <div className="hobbies-icon">
                                 {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -107,13 +135,13 @@ const FeelingsCheckIn = () => {
                         </label>
                     </div>
                 </fieldset>
-
-                <fieldset className="main-container">
+                
+                <fieldset className="main-container" style={ styles.homeStressorsPage }>
                     <div className="radio-buttons">
                         <legend>What are the home stressors?</legend>
 
                         <label className="custom-radio">
-                            <input type="radio" id="partner" name="homeStressors" value="partner" checked />
+                            <input type="radio" id="partner" name="homeStressors" value="partner" onClick={() => setCurrentPage("workStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -123,7 +151,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="family" name="homeStressors" value="family" checked />
+                            <input type="radio" id="family" name="homeStressors" value="family" onClick={() => setCurrentPage("workStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -133,7 +161,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="Financial" name="homeStressors" value="Financial" checked />
+                            <input type="radio" id="Financial" name="homeStressors" value="Financial" onClick={() => setCurrentPage("workStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -143,7 +171,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="domesticduties" name="homeStressors" value="domesticduties" checked />
+                            <input type="radio" id="domesticduties" name="homeStressors" value="domesticduties" onClick={() => setCurrentPage("workStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -153,7 +181,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="sickness" name="homeStressors" value="sickness" checked />
+                            <input type="radio" id="sickness" name="homeStressors" value="sickness" onClick={() => setCurrentPage("workStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -164,13 +192,12 @@ const FeelingsCheckIn = () => {
                     </div>
                 </fieldset>
 
-
-                <fieldset className="main-container">
+                <fieldset className="main-container" style={ styles.workStressorsPage } >
                     <div className="radio-buttons">
                         <legend>What are your work stressors?</legend>
 
                         <label className="custom-radio">
-                            <input type="radio" id="colleagues" name="workStressors" value="colleagues" checked />
+                            <input type="radio" id="colleagues" name="workStressors" value="colleagues" onClick={() => setCurrentPage("schoolStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -180,7 +207,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="boss" name="workStressors" value="boss" checked />
+                            <input type="radio" id="boss" name="workStressors" value="boss" onClick={() => setCurrentPage("schoolStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -190,7 +217,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="employees" name="workStressors" value="employees" checked />
+                            <input type="radio" id="employees" name="workStressors" value="employees" onClick={() => setCurrentPage("schoolStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -200,7 +227,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="workload" name="workStressors" value="workload" checked />
+                            <input type="radio" id="workload" name="workStressors" value="workload" onClick={() => setCurrentPage("schoolStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -210,7 +237,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="timemanagement" name="workStressors" value="timemanagement" checked />
+                            <input type="radio" id="timemanagement" name="workStressors" value="timemanagement"onClick={() => setCurrentPage("schoolStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -220,7 +247,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="workculture" name="workStressors" value="workculture" checked />
+                            <input type="radio" id="workculture" name="workStressors" value="workculture" onClick={() => setCurrentPage("schoolStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -230,13 +257,13 @@ const FeelingsCheckIn = () => {
                         </label>
                     </div>
                 </fieldset>
-
-                <fieldset className="main-container">
+                
+                <fieldset className="main-container" style={ styles.schoolStressorsPage }>
                     <div className="radio-buttons">
                         <legend>What are your school stressors?</legend>
 
                         <label className="custom-radio">
-                            <input type="radio" id="homework" name="schoolStressors" value="homework" checked />
+                            <input type="radio" id="homework" name="schoolStressors" value="homework" onClick={() => setCurrentPage("socialStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -246,7 +273,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="exams" name="schoolStressors" value="exams" checked />
+                            <input type="radio" id="exams" name="schoolStressors" value="exams" onClick={() => setCurrentPage("socialStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -256,7 +283,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="organization" name="schoolStressors" value="organization" checked />
+                            <input type="radio" id="organization" name="schoolStressors" value="organization" onClick={() => setCurrentPage("socialStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -266,7 +293,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="bullying" name="schoolStressors" value="bullying" checked />
+                            <input type="radio" id="bullying" name="schoolStressors" value="bullying" onClick={() => setCurrentPage("socialStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -276,7 +303,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="performance" name="schoolStressors" value="performance" checked />
+                            <input type="radio" id="performance" name="schoolStressors" value="performance" onClick={() => setCurrentPage("socialStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -286,7 +313,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="financial" name="schoolStressors" value="financial" checked />
+                            <input type="radio" id="financial" name="schoolStressors" value="financial" onClick={() => setCurrentPage("socialStressorsPage")}/>
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -297,12 +324,12 @@ const FeelingsCheckIn = () => {
                     </div>
                 </fieldset>
 
-                <fieldset className="main-container">
+                <fieldset className="main-container" style={ styles.socialStressorsPage } >
                     <div className="radio-buttons">
                         <legend>What are your social stressors?</legend>
 
                         <label className="custom-radio">
-                            <input type="radio" id="socialmedia" name="socialStressors" value="socialmedia" checked />
+                            <input type="radio" id="socialmedia" name="socialStressors" value="socialmedia" />
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -312,7 +339,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="traffic" name="socialStressors" value="traffic" checked />
+                            <input type="radio" id="traffic" name="socialStressors" value="traffic" />
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -322,7 +349,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="isolation" name="socialStressors" value="isolation" checked />
+                            <input type="radio" id="isolation" name="socialStressors" value="isolation" />
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -332,7 +359,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="friendsdispute" name="socialStressors" value="friendsdispute" checked />
+                            <input type="radio" id="friendsdispute" name="socialStressors" value="friendsdispute" />
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
@@ -342,7 +369,7 @@ const FeelingsCheckIn = () => {
                         </label>
 
                         <label className="custom-radio">
-                            <input type="radio" id="sportsperformance" name="socialStressors" value="sportsperformance" checked />
+                            <input type="radio" id="sportsperformance" name="socialStressors" value="sportsperformance" />
                             <span className="radio-btn"><i className="las la-checked"></i>
                                 <div className="hobbies-icon">
                                     {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}

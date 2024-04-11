@@ -8,7 +8,7 @@ const RestYourMindPage = () => {
 	const [destressPopover, setDestressPopover] = useState(null);
 	const [sleepPopover, setSleepPopover] = useState(false);
 	const [focusPopover, setFocusPopover] = useState(false);
-	
+
 	const handleDestressClick = (event) => {
 		setDestressPopover(event.currentTarget);
 	};

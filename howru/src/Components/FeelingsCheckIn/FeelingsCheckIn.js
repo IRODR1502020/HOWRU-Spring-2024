@@ -27,6 +27,10 @@ const FeelingsCheckIn = () => {
         const feelingCheckIn = AuthServiceInstance.addFeelingCheckIn(feelingCheckInToken);
     }
 // ###################################################################################
+
+    const [formSection, setFormSection] = useState('feeling');
+    // used to navigate which section of the should be displayed.
+    // [feeling, control, stressorOfTheDay, home, work, school, social]
     return (
         <SkeletonForAllPages>
             <form onSubmit={uploadFeelingCheckIn}>
@@ -69,151 +73,283 @@ const FeelingsCheckIn = () => {
                         </label>
 
 
-                        <div>
-                            <input type="radio" id="work" name="stressor" value="work" />
-                            <label for="work">Work</label>
-                        </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="work" name="stressor" value="work" checked />
+                            <span className="radio-btn"><i className="las la-check"></i>
+                                <div className="hobbies-icon">
+                                {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Work</h3>
+                                </div>
+                                
+                            </span>
+                        </label>
 
-                        <div>
-                            <input type="radio" id="school" name="stressor" value="school" />
-                            <label for="school">School</label>
-                        </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="school" name="stressor" value="school" checked />
+                            <span className="radio-btn"><i className="las la-check"></i>
+                                <div className="hobbies-icon">
+                                {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>School</h3>
+                                </div>
+                    
+                            </span>
+                        </label>
 
-                        <div>
-                            <input type="radio" id="socialSetting" name="stressor" value="socialSetting" />
-                            <label for="socialSetting">Social Setting</label>
-                        </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="socialsetting" name="stressor" value="socialsetting" checked />
+                            <span className="radio-btn"><i className="las la-check"></i>
+                                <div className="hobbies-icon">
+                                {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Social Setting</h3>
+                                </div>
+                                
+                            </span>
+                        </label>
                     </div>
                 </fieldset>
 
-                <fieldset>
-                    <legend>What are the home stressors?</legend>
+                <fieldset className="main-container">
+                    <div className="radio-buttons">
+                        <legend>What are the home stressors?</legend>
 
-                    <div>
-                        <input type="radio" id="partner" name="homeStressors" value="partner" checked />
-                        <label for="partner">Partner</label>
-                    </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="partner" name="homeStressors" value="partner" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Partner</h3>
+                                </div>
+                            </span>
+                        </label>
 
-                    <div>
-                        <input type="radio" id="family" name="homeStressors" value="family" />
-                        <label for="family">Family</label>
-                    </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="family" name="homeStressors" value="family" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Family</h3>
+                                </div>
+                            </span>
+                        </label>
 
-                    <div>
-                        <input type="radio" id="financial" name="homeStressors" value="financial" />
-                        <label for="financial">Financial</label>
-                    </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="Financial" name="homeStressors" value="Financial" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Financial</h3>
+                                </div>
+                            </span>
+                        </label>
 
-                    <div>
-                        <input type="radio" id="domesticDuties" name="homeStressors" value="domesticDuties" />
-                        <label for="domesticDuties">Domestic Duties</label>
-                    </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="domesticduties" name="homeStressors" value="domesticduties" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Domestic Duties</h3>
+                                </div>
+                            </span>
+                        </label>
 
-                    <div>
-                        <input type="radio" id="sickness" name="homeStressors" value="sickness" />
-                        <label for="sickness">Sickness</label>
-                    </div>
-                </fieldset>
-
-                <fieldset>
-                    <legend>What are your work stressors?</legend>
-
-                    <div>
-                        <input type="radio" id="colleagues" name="workStressors" value="colleagues" checked />
-                        <label for="colleagues">Colleagues</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" id="boss" name="workStressors" value="boss" />
-                        <label for="boss">Boss</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" id="employees" name="workStressors" value="employees" />
-                        <label for="employees">Employees</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" id="workload" name="workStressors" value="workload" />
-                        <label for="workload">Workload</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" id="timeManagement" name="workStressors" value="timeManagement" />
-                        <label for="timeManagement">Time Management</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" id="workCulture" name="workStressors" value="workCulture" />
-                        <label for="workCulture">Work Culture</label>
+                        <label className="custom-radio">
+                            <input type="radio" id="sickness" name="homeStressors" value="sickness" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Sickness</h3>
+                                </div>
+                            </span>
+                        </label>
                     </div>
                 </fieldset>
 
-                <fieldset>
-                    <legend>What are your school stressors?</legend>
 
-                    <div>
-                        <input type="radio" id="homework" name="scsocialStressors" value="homework" checked />
-                        <label for="homework">Homework</label>
-                    </div>
+                <fieldset className="main-container">
+                    <div className="radio-buttons">
+                        <legend>What are your work stressors?</legend>
 
-                    <div>
-                        <input type="radio" id="exams" name="schoolStressors" value="exams" />
-                        <label for="exams">Exams</label>
-                    </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="colleagues" name="workStressors" value="colleagues" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Colleagues</h3>
+                                </div>
+                            </span>
+                        </label>
 
-                    <div>
-                        <input type="radio" id="organization" name="schoolStressors" value="organization" />
-                        <label for="organization">Organization</label>
-                    </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="boss" name="workStressors" value="boss" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Boss</h3>
+                                </div>
+                            </span>
+                        </label>
 
-                    <div>
-                        <input type="radio" id="bullying" name="schoolStressors" value="bullying" />
-                        <label for="bullying">Bullying</label>
-                    </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="employees" name="workStressors" value="employees" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Employees</h3>
+                                </div>
+                            </span>
+                        </label>
 
-                    <div>
-                        <input type="radio" id="performance" name="schoolStressors" value="performance" />
-                        <label for="performance">Performance</label>
-                    </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="workload" name="workStressors" value="workload" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Workload</h3>
+                                </div>
+                            </span>
+                        </label>
 
-                    <div>
-                        <input type="radio" id="financial" name="schoolStressors" value="financial" />
-                        <label for="financial">Financial</label>
+                        <label className="custom-radio">
+                            <input type="radio" id="timemanagement" name="workStressors" value="timemanagement" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Time Management</h3>
+                                </div>
+                            </span>
+                        </label>
+
+                        <label className="custom-radio">
+                            <input type="radio" id="workculture" name="workStressors" value="workculture" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Work Culture</h3>
+                                </div>
+                            </span>
+                        </label>
                     </div>
                 </fieldset>
 
-                <fieldset>
-                    <legend>What are your social stressors?</legend>
+                <fieldset className="main-container">
+                    <div className="radio-buttons">
+                        <legend>What are your school stressors?</legend>
 
-                    <div>
-                        <input type="radio" id="socialMedia" name="socialStressors" value="socialMedia" checked />
-                        <label for="socialMedia">Social Media</label>
+                        <label className="custom-radio">
+                            <input type="radio" id="homework" name="schoolStressors" value="homework" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Homework</h3>
+                                </div>
+                            </span>
+                        </label>
+
+                        <label className="custom-radio">
+                            <input type="radio" id="exams" name="schoolStressors" value="exams" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Exams</h3>
+                                </div>
+                            </span>
+                        </label>
+
+                        <label className="custom-radio">
+                            <input type="radio" id="organization" name="schoolStressors" value="organization" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Organization</h3>
+                                </div>
+                            </span>
+                        </label>
+
+                        <label className="custom-radio">
+                            <input type="radio" id="bullying" name="schoolStressors" value="bullying" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Bullying</h3>
+                                </div>
+                            </span>
+                        </label>
+
+                        <label className="custom-radio">
+                            <input type="radio" id="performance" name="schoolStressors" value="performance" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Performance</h3>
+                                </div>
+                            </span>
+                        </label>
+
+                        <label className="custom-radio">
+                            <input type="radio" id="financial" name="schoolStressors" value="financial" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Financial</h3>
+                                </div>
+                            </span>
+                        </label>
                     </div>
+                </fieldset>
 
-                    <div>
-                        <input type="radio" id="traffic" name="socialStressors" value="traffic" />
-                        <label for="traffic">Traffic</label>
-                    </div>
+                <fieldset className="main-container">
+                    <div className="radio-buttons">
+                        <legend>What are your social stressors?</legend>
 
-                    <div>
-                        <input type="radio" id="isolation" name="socialStressors" value="isolation" />
-                        <label for="isolation">Isolation</label>
-                    </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="socialmedia" name="socialStressors" value="socialmedia" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Social Media</h3>
+                                </div>
+                            </span>
+                        </label>
 
-                    <div>
-                        <input type="radio" id="pandemic" name="socialStressors" value="pandemic" />
-                        <label for="pandemic">Pandemic</label>
-                    </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="traffic" name="socialStressors" value="traffic" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Traffic</h3>
+                                </div>
+                            </span>
+                        </label>
 
-                    <div>
-                        <input type="radio" id="friendsDispute" name="socialStressors" value="friendsDispute" />
-                        <label for="friendsDispute">Friends dispute</label>
-                    </div>
+                        <label className="custom-radio">
+                            <input type="radio" id="isolation" name="socialStressors" value="isolation" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Isolation</h3>
+                                </div>
+                            </span>
+                        </label>
 
-                    <div>
-                        <input type="radio" id="sportPerformance" name="socialStressors" value="sportPerformance" />
-                        <label for="sportPerformance">Sports Performance</label>
+                        <label className="custom-radio">
+                            <input type="radio" id="friendsdispute" name="socialStressors" value="friendsdispute" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Friends Dispute</h3>
+                                </div>
+                            </span>
+                        </label>
+
+                        <label className="custom-radio">
+                            <input type="radio" id="sportsperformance" name="socialStressors" value="sportsperformance" checked />
+                            <span className="radio-btn"><i className="las la-checked"></i>
+                                <div className="hobbies-icon">
+                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                    <h3>Sports Performance</h3>
+                                </div>
+                            </span>
+                        </label>
                     </div>
                 </fieldset>
                 <button type="submit">Document Feeling</button>

@@ -14,7 +14,6 @@ export default function Navbar() {
 	}
 
 	const navbarStyle = {
-		height: "100vh"
 	}
 
 

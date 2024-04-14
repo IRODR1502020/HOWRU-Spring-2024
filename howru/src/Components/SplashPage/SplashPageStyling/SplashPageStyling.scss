@@ -2,20 +2,31 @@
   position: relative;
   overflow: hidden;
   font-family: "Inter", sans-serif;
-  height: 600px;
+  height: 200px;
+  background-size: cover;
   padding: 0px;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
-  margin-top: 25px;
   img {
     width: 100%; /* Set the width to 100% to fill the carousel item */
     height: 100%; /* Set the height to 100% to fill the carousel item */
     object-fit: cover; /* Maintain aspect ratio while covering the entire space */
+    overflow:hidden;
   }
 }
 
+.darkBlueBG {
+  background-color: #274C77
+}
+
+.blueBG {
+  background-color: #6096BA
+}
+
+.lightBlueBG {
+  background-color: #A3CEF1
+}
+
 .container-fluid {
-  background-color: #f3fcfd;
+  background-color: #E7ECEF
 }
 
 #membership-container {
@@ -35,7 +46,7 @@
 }
 
 .plan {
-  background-color: #457F9D; /* Replace with the actual color for the plan boxes */
+  background-color: #274C77; /* Replace with the actual color for the plan boxes */
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;

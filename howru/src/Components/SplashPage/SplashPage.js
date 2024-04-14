@@ -2,7 +2,6 @@ import React from "react";
 import SkeletonForAllPages from "../GeneralComponents/SkeletonForAllPages";
 import Carousel from 'react-bootstrap/Carousel';
 import MembershipSection from "./MembershipSection";
-import Navbar from "../GeneralComponents/Navbar";
 import Footer from "../GeneralComponents/Footer"
 import Bootstrap, { Container, Row, Col } from 'react-bootstrap';
 import { Link as RouterLink, useNavigate } from "react-router-dom";
@@ -13,7 +12,6 @@ import "../../Styling/bootstrap.css"
 
 const SplashPage = () => {
 	const navigate = useNavigate();
-
 
 	const navbarStyle = {
 		backgroundColor: "#ecf3fe",
@@ -51,32 +49,38 @@ const SplashPage = () => {
 				</div> */}
 				<div className="row p-0">
 					<div className="row p-0">
-					<Carousel className="customCarousel">
-						<Carousel.Item className="carousel-image">
-							<img src="https://images.unsplash.com/photo-1444312645910-ffa973656eba?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="stones" />
-						</Carousel.Item>
-						<Carousel.Item className="carousel-image">
-							<img src="https://images.unsplash.com/photo-1458441087617-24d758e383f1?q=80&w=3773&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="meadow" />
-						</Carousel.Item>
-						<Carousel.Item className="carousel-image">
-							<img src="https://images.unsplash.com/photo-1682687982501-1e58ab814714?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="mermaid" />
-						</Carousel.Item>
-					</Carousel>
-
+						<div className="customCarousel">
+							<img src="https://images.unsplash.com/photo-1711139299064-f60e2753163f?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="stones" />
+						</div>
 					</div>
 
 					<div className="row">
-						<div className="col-md-6 bg-light p-5">
+						<div className="col-md-6 darkBlueBG p-5">
 							<h3 className="display-4">What is HowRU.Life?</h3>
 							<p>
-							HOWRU.Life is an innovative application designed to assist in the management of stress and anxiety. 
-							The application offers a variety of features, including a daily mood diary, where you can document your emotional state through responses to carefully curated questions. Furthermore, HOWRU.Life also provides immediate access to guided breathing exercises, offering an effective solution for instant anxiety relief. 
-							The multifaceted tool serves as your personalized ally in mental health maintenance and immediate stress reduction.
+								HOWRU.Life is an innovative application designed to assist in the management of stress and anxiety. 
+								The application offers a variety of features, including a daily mood diary, where you can document your emotional state through responses to carefully curated questions. Furthermore, HOWRU.Life also provides immediate access to guided breathing exercises, offering an effective solution for instant anxiety relief. 
+								The multifaceted tool serves as your personalized ally in mental health maintenance and immediate stress reduction.
 							</p>
+						</div>
+
+						<div className="col-md-6 darkBlueBG p-5">
+						</div>
+					</div>
+
+
+					<div className="row p-0">
+						<div className="customCarousel">
+						<img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?q=80&w=3869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></img>
+						</div>
+					</div>
+
+					<div className="row">
+						<div className="col-md-6 blueBG p-5">
 
 						</div>
 
-						<div className="col-md-6 p-5">
+						<div className="col-md-6 blueBG p-5">
 							<h3 className="display-4">Features</h3>
 							<ul className="list-group list-group-flush">
 								<li className="list-group-item">An item</li>
@@ -87,8 +91,7 @@ const SplashPage = () => {
 							</ul>
 						</div>
 					</div>
-
-					<MembershipSection />
+					<MembershipSection/>
 				</div>
 			</div>
 		</SkeletonForAllPages>

@@ -1,6 +1,8 @@
+import "./SplashPageStyling/SplashPageStyling.scss";
+
 const MembershipSection = () => {
     return (
-        <div className="row" id="membership-container">
+        <div className="row lightBlueBG" id="membership-container">
 
             <h1>Membership</h1>
             <div id="plans">

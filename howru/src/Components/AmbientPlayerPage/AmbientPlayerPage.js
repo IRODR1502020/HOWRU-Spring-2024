@@ -9,6 +9,21 @@ const AmbientPlayerPage = () => {
 		<SkeletonForAllPages>
 		
 		<section className="musicSection">
+		<h1>Ambient Music</h1>
+		<p>One of the powers of ambient music is its ability to induce a meditative and calming state in listeners. 
+			The slow, repetitive nature of the music can help to slow down the mind and reduce stress and anxiety. 
+			The absence of lyrics also allows the listener to focus on the sounds themselves and to interpret them in their own way, which can be a meditative experience.</p>
+
+		<p>
+			Another power of ambient music is its ability to evoke emotions and memories in a subtle way. 
+			The soundscapes and textures of ambient music can create a sense of place or time, and can trigger memories or emotions that are often difficult to access through other means.
+		</p>
+
+		<p>
+			Ambient music is also able to transcend beyond what is considered ordinary music because it is not bound by traditional musical structures or expectations. 
+			It is not designed to be catchy or upbeat, but rather to create a unique listening experience that is focused on the emotions and atmosphere created by the music itself. 
+			In this way, ambient music can be seen as a form of sonic art, allowing the listener to enter into a different state of mind and to experience sound in a new way.
+		</p>
 			<div className="card-grid">
 				<div className="card" style={{backgroundColor: '#d4a373'}}>
 					<h3 className="card_heading">

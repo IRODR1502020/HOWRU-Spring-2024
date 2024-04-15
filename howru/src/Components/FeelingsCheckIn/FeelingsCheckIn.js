@@ -29,6 +29,10 @@ const FeelingsCheckIn = () => {
           },
         socialStressorsPage: {
             display: page === "socialStressorsPage" ? "block" : "none"
+        },
+
+        thankYouPage : {
+            display: page === "thankYouPage" ? "block" : "none"
         }
       };
       
@@ -61,325 +65,335 @@ const FeelingsCheckIn = () => {
     return (
         <SkeletonForAllPages>
             <form onSubmit={uploadFeelingCheckIn}>
-                <legend>Feeling Check In</legend>
-                <div className="range-container" style={ styles.feelingTodayPage }>
-                    <label htmlFor="rangeInput">How are you feeling today?</label>
-                    <input type="range" 
-                            id="rangeInput" 
-                            min="1" 
-                            max="5" 
-                            value = {feeling}
-                            onChange={updateFeeling} 
-                            onMouseUp={() => setCurrentPage("controlTodayPage")}/>
-                    <span id="textInput">{feeling}</span>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-6 questions d-flex align-items-center justify-content-center flex-column">
+                                <legend className="text-center fs-1">Feeling Check In</legend>
+                                <div className="range-container" style={ styles.feelingTodayPage }>
+                                    <label htmlFor="rangeInput">How are you feeling today?</label>
+                                    <input type="range" 
+                                            id="rangeInput" 
+                                            min="1" 
+                                            max="5" 
+                                            value = {feeling}
+                                            onChange={updateFeeling} 
+                                            onMouseUp={() => setCurrentPage("controlTodayPage")}/>
+                                    <span id="textInput">{feeling}</span>
+                                </div>
+                                
+                                <div className="range-container" style={ styles.controlTodayPage }>
+                                    <label htmlFor="rangeInput">How in control are you today?</label>
+                                    <input type="range" 
+                                            id="rangeInput" 
+                                            min="1" 
+                                            max="5" 
+                                            value = {control}
+                                            onChange={updateControl} 
+                                            onMouseUp={() => setCurrentPage("stressorOfTheDayPage")}/>
+                                    <span id="textInput">{control}</span>
+                                </div>
+                                
+                                <fieldset className="main-container" style={ styles.stressorOfTheDayPage }>
+                                    <div className="radio-buttons">
+                                        <legend>Stressor of the Day</legend>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="home" name="stressor" value="home" onClick={() => setCurrentPage("homeStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-check"></i>
+                                                <div className="hobbies-icon">
+                                                {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Home</h3>
+                                                </div>
+                                                
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="work" name="stressor" value="work" onClick={() => setCurrentPage("homeStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-check"></i>
+                                                <div className="hobbies-icon">
+                                                {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Work</h3>
+                                                </div>
+                                                
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="school" name="stressor" value="school" onClick={() => setCurrentPage("homeStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-check"></i>
+                                                <div className="hobbies-icon">
+                                                {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>School</h3>
+                                                </div>
+                                    
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="socialsetting" name="stressor" value="socialsetting" onClick={() => setCurrentPage("homeStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-check"></i>
+                                                <div className="hobbies-icon">
+                                                {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Social Setting</h3>
+                                                </div>
+                                                
+                                            </span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                                
+                                <fieldset className="main-container" style={ styles.homeStressorsPage }>
+                                    <div className="radio-buttons">
+                                        <legend>What are the home stressors?</legend>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="partner" name="homeStressors" value="partner" onClick={() => setCurrentPage("workStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Partner</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="family" name="homeStressors" value="family" onClick={() => setCurrentPage("workStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Family</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="Financial" name="homeStressors" value="Financial" onClick={() => setCurrentPage("workStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Financial</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="domesticduties" name="homeStressors" value="domesticduties" onClick={() => setCurrentPage("workStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Domestic Duties</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="sickness" name="homeStressors" value="sickness" onClick={() => setCurrentPage("workStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Sickness</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset className="main-container" style={ styles.workStressorsPage } >
+                                    <div className="radio-buttons">
+                                        <legend>What are your work stressors?</legend>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="colleagues" name="workStressors" value="colleagues" onClick={() => setCurrentPage("schoolStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Colleagues</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="boss" name="workStressors" value="boss" onClick={() => setCurrentPage("schoolStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Boss</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="employees" name="workStressors" value="employees" onClick={() => setCurrentPage("schoolStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Employees</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="workload" name="workStressors" value="workload" onClick={() => setCurrentPage("schoolStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Workload</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="timemanagement" name="workStressors" value="timemanagement"onClick={() => setCurrentPage("schoolStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Time Management</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="workculture" name="workStressors" value="workculture" onClick={() => setCurrentPage("schoolStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Work Culture</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                                
+                                <fieldset className="main-container" style={ styles.schoolStressorsPage }>
+                                    <div className="radio-buttons">
+                                        <legend>What are your school stressors?</legend>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="homework" name="schoolStressors" value="homework" onClick={() => setCurrentPage("socialStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Homework</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="exams" name="schoolStressors" value="exams" onClick={() => setCurrentPage("socialStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Exams</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="organization" name="schoolStressors" value="organization" onClick={() => setCurrentPage("socialStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Organization</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="bullying" name="schoolStressors" value="bullying" onClick={() => setCurrentPage("socialStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Bullying</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="performance" name="schoolStressors" value="performance" onClick={() => setCurrentPage("socialStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Performance</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="financial" name="schoolStressors" value="financial" onClick={() => setCurrentPage("socialStressorsPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Financial</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset className="main-container" style={ styles.socialStressorsPage } >
+                                    <div className="radio-buttons">
+                                        <legend>What are your social stressors?</legend>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="socialmedia" name="socialStressors" value="socialmedia" onClick={() => setCurrentPage("thankYouPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Social Media</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="traffic" name="socialStressors" value="traffic" onClick={() => setCurrentPage("thankYouPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Traffic</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="isolation" name="socialStressors" value="isolation" onClick={() => setCurrentPage("thankYouPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Isolation</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="friendsdispute" name="socialStressors" value="friendsdispute" onClick={() => setCurrentPage("thankYouPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Friends Dispute</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+
+                                        <label className="custom-radio">
+                                            <input type="radio" id="sportsperformance" name="socialStressors" value="sportsperformance" onClick={() => setCurrentPage("thankYouPage")}/>
+                                            <span className="radio-btn"><i className="las la-checked"></i>
+                                                <div className="hobbies-icon">
+                                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
+                                                    <h3>Sports Performance</h3>
+                                                </div>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+
+                                <h1 style={ styles.thankYouPage }>Thank you!</h1>
+                        </div>
+                        <div className="col-md-6 results d-flex align-items-center justify-content-center flex-column">
+                            <button type="submit">Document Feeling</button>
+                        </div>
+                    </div>
                 </div>
-                
-                <div className="range-container" style={ styles.controlTodayPage }>
-                    <label htmlFor="rangeInput">How in control are you today?</label>
-                    <input type="range" 
-                            id="rangeInput" 
-                            min="1" 
-                            max="5" 
-                            value = {control}
-                            onChange={updateControl} 
-                            onMouseUp={() => setCurrentPage("stressorOfTheDayPage")}/>
-                    <span id="textInput">{control}</span>
-                </div>
-                
-                <fieldset className="main-container" style={ styles.stressorOfTheDayPage }>
-                    <div className="radio-buttons">
-                        <legend>Stressor of the Day</legend>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="home" name="stressor" value="home" onClick={() => setCurrentPage("homeStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-check"></i>
-                                <div className="hobbies-icon">
-                                {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Home</h3>
-                                </div>
-                                
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="work" name="stressor" value="work" onClick={() => setCurrentPage("homeStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-check"></i>
-                                <div className="hobbies-icon">
-                                {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Work</h3>
-                                </div>
-                                
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="school" name="stressor" value="school" onClick={() => setCurrentPage("homeStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-check"></i>
-                                <div className="hobbies-icon">
-                                {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>School</h3>
-                                </div>
-                    
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="socialsetting" name="stressor" value="socialsetting" onClick={() => setCurrentPage("homeStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-check"></i>
-                                <div className="hobbies-icon">
-                                {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Social Setting</h3>
-                                </div>
-                                
-                            </span>
-                        </label>
-                    </div>
-                </fieldset>
-                
-                <fieldset className="main-container" style={ styles.homeStressorsPage }>
-                    <div className="radio-buttons">
-                        <legend>What are the home stressors?</legend>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="partner" name="homeStressors" value="partner" onClick={() => setCurrentPage("workStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Partner</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="family" name="homeStressors" value="family" onClick={() => setCurrentPage("workStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Family</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="Financial" name="homeStressors" value="Financial" onClick={() => setCurrentPage("workStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Financial</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="domesticduties" name="homeStressors" value="domesticduties" onClick={() => setCurrentPage("workStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Domestic Duties</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="sickness" name="homeStressors" value="sickness" onClick={() => setCurrentPage("workStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Sickness</h3>
-                                </div>
-                            </span>
-                        </label>
-                    </div>
-                </fieldset>
-
-                <fieldset className="main-container" style={ styles.workStressorsPage } >
-                    <div className="radio-buttons">
-                        <legend>What are your work stressors?</legend>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="colleagues" name="workStressors" value="colleagues" onClick={() => setCurrentPage("schoolStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Colleagues</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="boss" name="workStressors" value="boss" onClick={() => setCurrentPage("schoolStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Boss</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="employees" name="workStressors" value="employees" onClick={() => setCurrentPage("schoolStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Employees</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="workload" name="workStressors" value="workload" onClick={() => setCurrentPage("schoolStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Workload</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="timemanagement" name="workStressors" value="timemanagement"onClick={() => setCurrentPage("schoolStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Time Management</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="workculture" name="workStressors" value="workculture" onClick={() => setCurrentPage("schoolStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Work Culture</h3>
-                                </div>
-                            </span>
-                        </label>
-                    </div>
-                </fieldset>
-                
-                <fieldset className="main-container" style={ styles.schoolStressorsPage }>
-                    <div className="radio-buttons">
-                        <legend>What are your school stressors?</legend>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="homework" name="schoolStressors" value="homework" onClick={() => setCurrentPage("socialStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Homework</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="exams" name="schoolStressors" value="exams" onClick={() => setCurrentPage("socialStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Exams</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="organization" name="schoolStressors" value="organization" onClick={() => setCurrentPage("socialStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Organization</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="bullying" name="schoolStressors" value="bullying" onClick={() => setCurrentPage("socialStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Bullying</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="performance" name="schoolStressors" value="performance" onClick={() => setCurrentPage("socialStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Performance</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="financial" name="schoolStressors" value="financial" onClick={() => setCurrentPage("socialStressorsPage")}/>
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Financial</h3>
-                                </div>
-                            </span>
-                        </label>
-                    </div>
-                </fieldset>
-
-                <fieldset className="main-container" style={ styles.socialStressorsPage } >
-                    <div className="radio-buttons">
-                        <legend>What are your social stressors?</legend>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="socialmedia" name="socialStressors" value="socialmedia" />
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Social Media</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="traffic" name="socialStressors" value="traffic" />
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Traffic</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="isolation" name="socialStressors" value="isolation" />
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Isolation</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="friendsdispute" name="socialStressors" value="friendsdispute" />
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Friends Dispute</h3>
-                                </div>
-                            </span>
-                        </label>
-
-                        <label className="custom-radio">
-                            <input type="radio" id="sportsperformance" name="socialStressors" value="sportsperformance" />
-                            <span className="radio-btn"><i className="las la-checked"></i>
-                                <div className="hobbies-icon">
-                                    {/* <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?size=626&ext=jpg" /> */}
-                                    <h3>Sports Performance</h3>
-                                </div>
-                            </span>
-                        </label>
-                    </div>
-                </fieldset>
-                <button type="submit">Document Feeling</button>
             </form>
         </SkeletonForAllPages>
     );

@@ -30,6 +30,10 @@ const AccountNavbar = () => {
 		boxShadow: "5px 5px 5px 0px rgba(0,0,0,0.75)"
 	}
 
+    const navbarColor = {
+        backgroundColor: "#1A1B25"
+    }
+
 	const handleLogout = () => {
 		const userEmail = {
 			'email': sessionStorage.getItem("user_email")
@@ -46,27 +50,24 @@ const AccountNavbar = () => {
     return (
 
 
-            <nav class="navbar navbar-expand-lg bg-body-tertiary p-3">
+            <nav class="navbar navbar-expand-lg p-3 fixed-top" style={navbarColor}>
                     <a class="navbar-brand" href="#">
-
 				        <img src={logo} alt="logo" style={logoStyle} />
-	
-
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a href="#" className="nav-item" onClick={() => navigate('/')} align="right">
-                                    <House height="32" width="32"/>
+                            <li class="nav-item" style={{ backgroundColor: "red" }}>
+                                <a href="#" className="nav-item text-white" onClick={() => navigate('/')} align="right">
+                                    <House height="32" width="32" style={{ color: "white" }} />
                                 </a>
                             </li>
                             <li class="nav-item">
                                 {
                                     sessionStorage.getItem('name') !== null ?
-                                (<Link component={RouterLink} to="/dashboard" underline="hover" className="p-2 m-2">
+                                (<Link component={RouterLink} to="/dashboard" underline="hover" className="p-2 m-2 text-white">
                                     Dashboard
                                 </Link>) : 
                                 (<Link component={RouterLink} to="/login" underline="hover" className="p-2 m-2">
@@ -87,8 +88,8 @@ const AccountNavbar = () => {
                             <li class="nav-item">
                                 {
                                 sessionStorage.getItem('name') === null ?
-                                    null : (<span><h4 className="d-inline-block pr-2 m-0">Hello, {sessionStorage.getItem('name')}</h4> 
-                                            <Link style={ createAccountButton } type="button" onClick={handleLogout} underline="hover" className="p-2 m-2"> Logout </Link></span>)
+                                    null : (<span><h4 className="d-inline-block pr-2 m-0 text-white">Hello, {sessionStorage.getItem('name')}</h4> 
+                                            <Link style={ createAccountButton } type="button" onClick={handleLogout} underline="hover" className="p-2 m-2 text-white"> Logout </Link></span>)
 
                                 }
                             </li>

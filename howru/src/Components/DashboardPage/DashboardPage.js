@@ -12,15 +12,16 @@ const DashboardPage = () => {
 	
 	return (
 		<SkeletonForAllPages>
-		
-		<div className="menu">
-			<button className="menu-button" type="button" onClick={() => navigate('/check-in')}> Daily Check-in </button>
-			<button className="menu-button" type="button" onClick={() => navigate('/ambientmusic')}> Ambient Music </button>
-			<button className="menu-button" type="button" onClick={() => navigate('/restyourmind')}> Meditative Techniques </button>
-			<button className="menu-button" type="button" onClick={() => navigate('/roadmap')}> De-Stress My Life Roadmap </button>
 			
-		</div>
-
+			<div className="d-flex align-items-center justify-content-center">
+				<div className="menu">
+					<button className="menu-button" type="button" onClick={() => navigate('/check-in')}> Daily Check-in </button>
+					<button className="menu-button" type="button" onClick={() => navigate('/ambientmusic')}> Ambient Music </button>
+					<button className="menu-button" type="button" onClick={() => navigate('/restyourmind')}> Meditative Techniques </button>
+					<button className="menu-button" type="button" onClick={() => navigate('/roadmap')}> De-Stress My Life Roadmap </button>
+					
+				</div>
+			</div>
 		</SkeletonForAllPages>
 		
 	);

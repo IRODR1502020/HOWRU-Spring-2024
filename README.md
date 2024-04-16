@@ -24,7 +24,7 @@ howru
 	| 	├── ...
 	├── Components/
 	|	├── componentName/		
-    |	├── componentNameStyling/
+    	├── componentNameStyling/
 		|	|	├── componentNameStyling.css
 		|	├── componentName.js
 	├── Styling/

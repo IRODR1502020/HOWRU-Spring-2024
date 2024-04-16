@@ -106,7 +106,7 @@ const FeelingsCheckIn = () => {
                                         <label className="custom-radio">
                                             <input type="radio" id="home" name="stressor" value="home" 
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage"); 
+                                                setCurrentPage("homeStressorsPage"); 
                                                 setStressorOTD("home");
                                             }}/>
                                             <span className="radio-btn"><i className="las la-check"></i>
@@ -121,7 +121,7 @@ const FeelingsCheckIn = () => {
                                         <label className="custom-radio">
                                             <input type="radio" id="work" name="stressor" value="work" 
                                                 onClick={() => {
-                                                    setCurrentPage("thankYouPage"); 
+                                                    setCurrentPage("workStressorsPage"); 
                                                     setStressorOTD("work");
                                                 }}/>
                                             <span className="radio-btn"><i className="las la-check"></i>
@@ -136,7 +136,7 @@ const FeelingsCheckIn = () => {
                                         <label className="custom-radio">
                                             <input type="radio" id="school" name="stressor" value="school"                                                 
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage"); 
+                                                setCurrentPage("schoolStressorsPage"); 
                                                 setStressorOTD("school");
                                             }}/>
                                             <span className="radio-btn"><i className="las la-check"></i>
@@ -151,7 +151,7 @@ const FeelingsCheckIn = () => {
                                         <label className="custom-radio">
                                             <input type="radio" id="socialsetting" name="stressor" value="socialsetting"                                                 
                                             onClick={() => {
-                                                setCurrentPage("thankYouPage"); 
+                                                setCurrentPage("socialStressorsPage"); 
                                                 setStressorOTD("socialsetting");
                                             }}/>
                                             <span className="radio-btn"><i className="las la-check"></i>

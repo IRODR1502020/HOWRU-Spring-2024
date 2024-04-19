@@ -62,7 +62,7 @@ const FeelingsCheckIn = () => {
         feelingCheckInToken['control_rating'] = control;
 
         console.log(feelingCheckInToken)
-        const feelingCheckIn = AuthServiceInstance.addFeelingCheckIn(feelingCheckInToken);
+        AuthServiceInstance.addFeelingCheckIn(feelingCheckInToken);
     }
 // ###################################################################################
 

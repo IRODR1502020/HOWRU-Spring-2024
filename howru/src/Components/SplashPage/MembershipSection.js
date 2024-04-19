@@ -6,20 +6,20 @@ const MembershipSection = () => {
 
             <h1>Membership</h1>
             <div id="plans">
-                <div class="plan basic">
+                <div className="plan basic">
                     <h2>Basic</h2>
                     <p>1 Month at $3.99</p>
-                    <p class="price-per-month">$3.99 / mo*</p>
+                    <p className="price-per-month">$3.99 / mo*</p>
                 </div>
-                <div class="plan balanced">
+                <div className="plan balanced">
                     <h2>Balanced</h2>
                     <p>3 Months at $7.99</p>
-                    <p class="price-per-month">$2.66 / mo*</p>
+                    <p className="price-per-month">$2.66 / mo*</p>
                 </div>
-                <div class="plan pro">
+                <div className="plan pro">
                     <h2>Pro</h2>
                     <p>12 Months at $19.99</p>
-                    <p class="price-per-month">$1.66 / mo*</p>
+                    <p className="price-per-month">$1.66 / mo*</p>
                 </div>
             </div>
             {/* <div class="confirm-button-container">
